@@ -1,0 +1,618 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Ethan Gardner"
+---
+<BaseLayout
+	title={title}
+>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<style>
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Josefin Sans Light'), local('JosefinSans-Light'), url(https://fonts.gstatic.com/s/josefinsans/v9/C6HYlRF50SGJq1XyXj04zwV_pQ1T3xN3K1c3sB361us.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Josefin Sans Bold'), local('JosefinSans-Bold'), url(https://fonts.gstatic.com/s/josefinsans/v9/C6HYlRF50SGJq1XyXj04z306qf9KHRHwsVx7iw5MXmY.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v11/nj47mAZe0mYUIySgfn0wpQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v11/v0SdcGFAl2aezM9Vq_aFTQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v11/DvlFBScY1r-FMtZSYIYoYw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Lato Light Italic'), local('Lato-LightItalic'), url(https://fonts.gstatic.com/s/lato/v11/2HG_tEPiQ4Z6795cGfdivKCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v11/LqowQDslGv4DmUBAfWa2Vw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYEKCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+}
+
+body {
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  margin: 50px 0 100px;
+  letter-spacing: .3px;
+  color: #39424B; }
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  margin: 0; }
+
+h1 {
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: 1px; }
+
+h2 {
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: .5px; }
+
+h3 {
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: .4px; }
+  h3.bold {
+    font-weight: 700; }
+
+h4 {
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 12px; }
+  h4.bold {
+    font-weight: 700; }
+
+h5 {
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 11px; }
+  h5.italic {
+    font-style: italic; }
+
+h6 {
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 10px; }
+
+a {
+  color: inherit;
+  text-decoration: inherit; }
+  a:hover {
+    color: #2895F1; }
+  a .fa-external-link {
+    font-size: 10px;
+    vertical-align: text-top; }
+
+p,
+li {
+  font-size: 11px; }
+
+blockquote {
+  font-size: 11px;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  margin: 10px 25px; }
+
+em {
+  color: #999; }
+
+ul {
+  margin: 10px 0 0;
+  -webkit-padding-start: 25px; }
+  ul li {
+    padding-left: 10px; }
+  ul.minimal {
+    list-style: none;
+    padding: 0; }
+    ul.minimal li {
+      margin-bottom: 3px;
+      padding-left: 0; }
+  ul.two-column {
+    -webkit-column-count: 2;
+    -webkit-column-gap: 28px;
+    -moz-column-count: 2;
+         column-count: 2;
+    -moz-column-gap: 28px;
+         column-gap: 28px; }
+    ul.two-column li {
+      padding-left: 0; }
+
+@page {
+  size: A4; }
+
+.container {
+  padding-top: 20px; }
+
+.keyline {
+  width: 45px;
+  margin: 8px 0 10px;
+  border-top: 1px solid #56817A; }
+
+.pull-left {
+  float: left; }
+
+.pull-right {
+  float: right; }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+.profile-pic {
+  margin-top: -5px;
+  margin-right: 18px; }
+  .profile-pic img {
+    height: 52px;
+    width: 52px;
+    border-radius: 50%;
+    border: 2px solid #56817A; }
+
+.summary {
+  margin: 5px 0 5px; }
+
+/* Layouts */
+.page {
+  background: white;
+  width: 612px;
+  min-height: 792px;
+  display: block;
+  margin: 0 auto;
+  border-top: 10px solid #56817A;
+  padding: 36px 22px 30px 34px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
+  .page:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.left-column {
+  float: left;
+  width: 160px;
+  margin-right: 20px;
+  word-wrap: break-word; }
+
+.right-column {
+  width: auto;
+  overflow: hidden; }
+
+.item {
+  margin-bottom: 15px; }
+  .item:last-child {
+    margin-bottom: 0; }
+
+@media print {
+  body {
+    margin: 0; }
+  .page {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 36px 0 30px;
+    box-shadow: none; }
+    .page .resume-header,
+    .page .resume-content {
+      padding: 0 22px 0 34px; }
+  .container {
+    page-break-inside: avoid; }
+  .work-container .item {
+    page-break-inside: avoid; }
+  .fa-external-link {
+    display: none; } }
+
+/* Components */
+.info-tag-container {
+  margin-bottom: 5px; }
+  .info-tag-container .fa {
+    font-size: 14px;
+    width: 12px;
+    margin-right: 5px;
+    text-align: center;
+    vertical-align: middle; }
+    .info-tag-container .fa.fa-map-marker {
+      font-size: 16px; }
+    .info-tag-container .fa.fa-mobile {
+      font-size: 18px; }
+    .info-tag-container .fa.fa-envelope-o {
+      font-size: 12px; }
+    .info-tag-container .fa.fa-desktop {
+      font-size: 11px; }
+    .info-tag-container .fa.fa-external-link {
+      width: auto;
+      font-size: inherit;
+      vertical-align: text-top; }
+  .info-tag-container .info-text {
+    font-size: 9px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 139px; }
+
+.references-container .fa {
+  font-size: 14px; }
+
+	</style>
+		<main id="resume" class="page">
+			<header class="resume-header clearfix">
+			    <div class="profile-header pull-left">
+			        <h1>Ethan Gardner</h1>
+			        <h2>System Engineer at Biomated Solutions LLC</h2>
+			    </div>
+			    <div class="profile-pic pull-right">
+			        <img src="" alt="profile-pic">
+			    </div>
+			</header>
+			<div class="resume-content">
+				<aside class="left-column">
+					<div class="container about-container">
+					    <div class="title">
+					        <h3>About</h3>
+					        <div class="keyline"></div>
+					    </div>
+					        <div class="info-tag-container">
+					            <i class="fa fa-map-marker"></i>
+					        
+					                <h6 class="info-text">37 Hill Street Morristown NJ</h6>
+					        </div>
+					        <div class="info-tag-container">
+					            <i class="fa fa-envelope-o"></i>
+					        
+					                <h6 class="info-text">gardner.ethan@comcast.net</h6>
+					        </div>
+					        <div class="info-tag-container">
+					            <i class="fa fa-mobile"></i>
+					        
+					                <h6 class="info-text">8564722459</h6>
+					        </div>
+					
+					                        <div class="info-tag-container">
+					                            <i class="fa fa-linkedin-square"></i>
+					                        
+					                                <h6 class="info-text">
+					                                    <a href="https://www.linkedin.com/in/ethan-gardner-06261988/" target="_blank">
+					                                        in/ethan-gardner-06261988 <i class="fa fa-external-link" aria-hidden="true"></i>
+					                                    </a>
+					                                </h6>
+					                        </div></section>
+					    <div class="skills-container">
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>New Business Development</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>JavaScript</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>SOLIDWORKS</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>Design for Manufacturing</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>Geometric Dimensioning &amp; Tolerancing</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>C (Programming Language)</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>TypeScript</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>OrCAD</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>Hardware</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>docker</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>Haskell</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>Design Failure Mode and Effect Analysis (DFMEA)</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>ISO 9001</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>Python (Programming Language)</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>LabVIEW</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>Autodesk Inventor</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>Node.js</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>React.js</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					            <section class="container">
+					                    <div class="title">
+					                        <h3>Amazon Web Services (AWS)</h3>
+					                        <div class="keyline"></div>
+					                    </div>            </section>
+					    </div>
+					    <div class="container languages-container">
+					        <div class="title">
+					            <h3>Languages</h3>
+					            <div class="keyline"></div>
+					        </div>
+					        <ul class="minimal">
+					                <li>
+					                    <h6>English <em>(Native Speaker)</em></h6>
+					                </li>
+					        </ul>
+					    </div>
+				</aside>
+				<div class="right-column">
+					<div class="container work-container">
+					    <div class="title">
+					        <h3>Experience</h3>
+					        <div class="keyline"></div>
+					    </div>
+					        <section class="item">
+					            <div class="section-header clearfix">
+					                <h5 class="italic pull-right">
+					                        <span class="startDate">01/2021</span>
+					                        <span class="endDate"> - Present</span>
+					                </h5>
+					            </div>
+					            <h4>Senior Systems Engineer</h4>
+					
+					            <p class="summary">Biomated Solutions services a wide variety of clients. Most work consists of a mixture of Hardware, Software, and Mechanical design. Project&#x27;s range in size from multi-year development to next day quick turn solutions.
+					
+					Development of custom firmware utilizing the stm32 series of microcontroller&#x27;s. All firmware is written in C and utilizes a wide array of communication protocols depending on the project most commonly SPI, I2C, UART, USB-CDC, and Modbus RTU.
+					
+					Development of embedded GUI&#x27;s in PyQt5, QML, and Qt.
+					
+					Development of web interfaces in React with TypeScript and server&#x27;s using Python.
+					
+					Electrical Design using OrCad for items ranging from PCB&#x27;s to Control Cabinets and Cables.
+					
+					Mechanical Design using AutoDesk Inventor.
+					
+					Hardware Debugging using Logic Analyzer, Oscilloscope, DMM, Digital Power Supplies, Thermal Imaging Camera, etc.
+					
+					Development of Control and Automation System&#x27;s using CODESYS running on WAGO PLC&#x27;s and FESTO PLC&#x27;s
+					
+					Commonly Used Hardware:
+					Toradex, Raspberry Pi, BeagleBone Black, WAGO PFC200</p>
+					
+					        </section>
+					        <section class="item">
+					            <div class="section-header clearfix">
+					                <h5 class="italic pull-right">
+					                        <span class="startDate">08/2018</span>
+					                        <span class="endDate"> - Present</span>
+					                </h5>
+					            </div>
+					            <h4>Co-Founder</h4>
+					
+					            <p class="summary">Designed REST API using Node.js, PostgreSQL with Postgis spatial extension and Redis.
+					
+					Developed User Interface for internal tooling with Reactjs for administrative tasks. 
+					Implemented monthly billing system using Stripe and email notification system using SendGrid.
+					
+					Developed microservices in both Haskell and Python for handling email notification system, billing, housing search suggestions, analytics, and various site cleanup operations, as well as image manipulation via sharp/NodeJS. 
+					
+					Deployed docker containerized site on Digital Ocean with image storage using S3.</p>
+					
+					        </section>
+					        <section class="item">
+					            <div class="section-header clearfix">
+					                <h5 class="italic pull-right">
+					                        <span class="startDate">11/2017</span>
+					                        <span class="endDate"> - 01/2021</span>
+					                </h5>
+					            </div>
+					            <h4>New Product Development Engineer</h4>
+					
+					
+					        </section>
+					        <section class="item">
+					            <div class="section-header clearfix">
+					                <h5 class="italic pull-right">
+					                        <span class="startDate">05/2015</span>
+					                        <span class="endDate"> - 11/2017</span>
+					                </h5>
+					            </div>
+					            <h4>R&amp;D engineer</h4>
+					
+					            <p class="summary">Developed Control system in C on micro controller for Pulmonary and Abdominal Simulation device used for R&amp;D and Competitive Marketing. 
+					
+					Developed User Interface for Pulmonary and Abdominal Simulator in Python and C for control of embedded device over serial. 
+					
+					Developed User Interface for viewing test results in Reactjs being served data from a Flask Rest API. 
+					
+					Developed and Executed test protocols for various devices in Ethicon&#x27;s medical device portfolio as well as designed fixtures in Solidworks for testing.</p>
+					
+					        </section>
+					        <section class="item">
+					            <div class="section-header clearfix">
+					                <h5 class="italic pull-right">
+					                        <span class="startDate">06/2017</span>
+					                        <span class="endDate"> - 10/2017</span>
+					                </h5>
+					            </div>
+					            <h4>Full Stack Developer</h4>
+					
+					            <p class="summary">Designed REST API using Node.js and Postgres.
+					
+					Developed User Interface for internal tooling with React.js and Redux. 
+					
+					Implemented billing system using stripe.
+					
+					Deployed site on Digital Ocean with image storage using AWS S3.</p>
+					
+					        </section>
+					        <section class="item">
+					            <div class="section-header clearfix">
+					                <h5 class="italic pull-right">
+					                        <span class="startDate">09/2016</span>
+					                        <span class="endDate"> - 05/2017</span>
+					                </h5>
+					            </div>
+					            <h4>Research Project</h4>
+					
+					            <p class="summary">Helped delegate subprojects and managed progress in order to meet deadlines. 
+					
+					Design of fixture for GAIT simulation on Stryker ExFix device for fatigue testing purposes. 
+					
+					Software Design for PID controller and GUI design for GAIT simulator device.
+					
+					Design of Personalized GAIT force reader to fit GAIT cycle to simulate individuals GAIT patterns.</p>
+					
+					        </section>
+					        <section class="item">
+					            <div class="section-header clearfix">
+					                <h5 class="italic pull-right">
+					                        <span class="startDate">05/2015</span>
+					                        <span class="endDate"> - 09/2015</span>
+					                </h5>
+					            </div>
+					            <h4>Process Engineer</h4>
+					
+					            <p class="summary">Led effort to implement Training Within industry deployment of all manufacturing work instructions.
+					
+					Programmed a document tree in order to maintain accurate work instruction records.
+					
+					Improved processes with Taylor studies, Six Sigma, and LEAN techniques.
+					
+					Obtained TWI (Training within Industry) certification. 
+					
+					Led many IQ’s, PQ’s, and OQ’s for various projects.</p>
+					
+					        </section>
+					        <section class="item">
+					            <div class="section-header clearfix">
+					                <h5 class="italic pull-right">
+					                        <span class="startDate">09/2014</span>
+					                        <span class="endDate"> - 02/2015</span>
+					                </h5>
+					            </div>
+					            <h4>R&amp;D Engineer</h4>
+					
+					            <p class="summary">Designed Graphic User Interface in VB.Net allowing for touch screen control of a Hair Follicle Extraction unit.
+					
+					Developed an Arduino development board using C++ for control of relays and other control elements.
+					
+					Developed SolidWorks models for Meibomian eye patch design and prototype assembly.</p>
+					
+					        </section>
+					        <section class="item">
+					            <div class="section-header clearfix">
+					                <h5 class="italic pull-right">
+					                        <span class="startDate">05/2014</span>
+					                        <span class="endDate"> - 09/2014</span>
+					                </h5>
+					            </div>
+					            <h4>Manufacturing Engineer</h4>
+					
+					            <p class="summary">Used LEAN and Six Sigma techniques to obtain maximum efficiency of multiple product lines.
+					
+					Helped design metric monitoring devices, and various test equipment.
+					
+					More than doubled productivity of kitting procedure by utilizing Taylor studies.
+					
+					Conducted and planned protocol for multiple engineering studies to increase efficiency and determine root-cause analysis.
+					
+					Worked extensively with Supply Chain Management, Quality Control, and Incoming Quality Control for demand planning and preparation.</p>
+					
+					        </section>
+					</div>
+					<div class="container education-container">
+					    <div class="title">
+					        <h3>Education</h3>
+					        <div class="keyline"></div>
+					    </div>
+					        <section class="item">
+					            <div class="section-header clearfix">
+					                <h3 class="bold pull-left">
+					                        Rutgers, The State University of New Jersey-New Brunswick
+					                </h3>
+					                <h5 class="italic pull-right">
+					                        <span class="startDate">12/2013</span>
+					                        <span class="endDate"> - 12/2017</span>
+					                </h5>
+					            </div>
+					            <h4>Biomedical Engineering Biomedical Engineering</h4>
+					
+					
+					        </section>
+					</div>
+				</div>
+			</div>
+		</main>
+</BaseLayout>

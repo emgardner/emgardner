@@ -1,0 +1,204 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "About"
+---
+<BaseLayout
+	title={title}
+>
+  <h1>Hi I'm Ethan</h1>
+  <text>
+     I'm an engineer of sorts, I grew up in a small town in the suburbs of Philadelphia, went to school for Biomedical Engineering at Rutgers University and now live in Morristown, New Jersey.
+     <br/>
+     <br/>
+     I am currently working in the systems engineering field, and trying to figure out what to do with the rest of my life.
+     <br/>
+     <br/>
+     I enjoy working on Software, Electrical, and Mechanical projects.
+     <br/>
+     <br/>
+     In my freetime you can find me programming, working on side projects, backpacking, or doing some kind of physical activity.
+     <br/>
+     <br/>
+  </text>
+  <div class="column">
+  <img id="me" src="/assets/about/ethan-hawaii.jpg" />
+  <span><i>Waimea Canyon, HI</i></span>
+  </div>
+
+  <section>
+      <div class="tools">
+        <span>Tools i use</span>
+        <div>
+          <div id="sidebar"></div>
+          <ul>
+            <li><b>Operating System:</b> Ubuntu</li>
+            <li><b>Terminal:</b> ZSH/TMUX</li>
+            <li><b>Text Editor:</b> Neovim</li>
+            <li><b>EDA:</b> OrCAD Capture/KiCAD</li>
+            <li><b>CAD:</b> Inventor/Fusion360</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tools">
+        <span>Languages I'm comfortable with in no specific order</span>
+        <div>
+          <div id="sidebar"></div>
+          <ul>
+            <li>Rust</li>
+            <li>C++</li>
+            <li>C</li>
+            <li>Haskell</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>QML</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  <section>
+    <span>
+      I started learning software my sophmore year of college in 2016, and I've been hooked ever since. I love working on software that makes things move but I also enjoy just moving bits around. I also have an interest in hardware as well. I find the relationship between hardware and software to be a fascinating design space. 
+    </span>
+  </section>
+
+
+
+  <!-- 
+    Section about hiking
+    Section about goals 
+    Section about purpose/value
+    Section about this blog
+  -->
+  <!--
+  <section>
+    <div id="timeline">
+      <div id="timeline-bar"></div>
+      <div class="timeline-item">
+        <img src="/assets/about/clearview.png"/>
+        <div class="timeline-info">
+          <span>Clearview Highschool</span>
+          <span>2010-2013</span>
+        </div>
+      </div>
+      <img src="/assets/about/ru.svg"/>
+      <img src="/assets/about/ethicon.webp"/>
+      <img src="/assets/about/arcmed.svg"/>
+      <img src="/assets/about/biomated.png"/>
+    </div>
+  </section>
+  -->
+
+</BaseLayout>
+<style>
+  /*
+  #timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+  }
+
+  #timeline-bar {
+    position: absolute;
+    left: 0;
+    top: 25px;
+    background-color: white;
+    height: calc(100% - 50px);
+    width: 4px;
+    border-radius: 2px;
+  }
+
+  #timeline > img {
+    max-height: 50px;
+    width: auto;
+    margin: 12px 12px;
+  }
+
+  .timeline-item > img {
+    max-height: 50px;
+    width: auto;
+    margin: 12px 0px;
+  }
+
+  .timeline-item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+
+  .timeline-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .timeline-info > span {
+    flex: 1;
+    margin-left: 12px;
+    text-align: left;
+  }
+  */
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #me {
+   max-width: 100%;
+  } 
+
+  @media (min-width: 360px) {
+    #me {
+      max-width: 336px;
+    }
+  }
+
+  .tools {
+    position: relative;
+    padding-left: 0px;
+    margin-top: 20px;
+  }
+
+  .tools > div {
+    position: relative;
+  }
+
+  .tools > span {
+    font-weight: bold;
+  }
+
+  .tools > div > ul {
+    list-style-type: none;
+    padding: 0px 12px;
+  }
+
+  .tools > div > ul > li {
+  }
+
+  #sidebar {
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   width: 4px;
+   height: 100%;
+   background-color: var(--text-color);
+   padding: 0px;
+   margin: 0px;
+  }
+
+  span {
+   width: 100%;
+   text-align: center;
+  }
+</style> 

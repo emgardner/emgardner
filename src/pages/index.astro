@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Home"
+const posts = await Astro.glob("./posts/**/*.mdx");
+
+const getRealImage = (postLocation: string, imageLocation: string): string => {
+	let post = postLocation.split("/").slice(2);
+	let image = imageLocation.split("/");
+	post[post.length - 1] = image[image.length - 1]
+	let result = ["", "assets", ...post].join("/")
+	return result
+}
+---
+<style>
+	.posts {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.post {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		text-decoration: none;
+		color: var(--text-color);
+		background-color: var(--accent-color);
+		border-radius: 2px;
+		margin: 12px 0px;
+	}
+
+	.post > img {
+		max-width: 80%;
+		max-height: 100px;
+		margin-right: 12px;
+		border-top-left-radius: 2px;
+		border-bottom-left-radius: 2px;
+	}
+
+	.post-info {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		height: 100%;
+		flex: 1 1;
+	}
+
+	span {
+		color: var(--text-color);
+	}
+
+	h2 {
+		margin: 0px;
+	}
+
+</style>
+<BaseLayout
+	title={title}
+>
+	<h1>Posts</h1>
+	{
+		posts.map((x) => {
+			return(
+				<a class="post" href={x.url}>
+					<img src={getRealImage(x.url, x.frontmatter.hero)} />
+					<div class="post-info">
+						<h2>{x.frontmatter.title}</h2>
+						<span>{x.frontmatter.description}</span>
+					</div>
+				</a>
+			)
+		})
+	}
+</BaseLayout>

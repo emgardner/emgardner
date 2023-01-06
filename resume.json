@@ -1,0 +1,239 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Ethan Gardner",
+    "label": "System Engineer at Biomated Solutions LLC",
+    "image": "",
+    "email": "gardner.ethan@comcast.net",
+    "phone": "8564722459",
+    "url": "",
+    "summary": "",
+    "location": {
+      "countryCode": "US",
+      "address": "37 Hill Street Morristown NJ"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "ethan-gardner-06261988",
+        "url": "https://www.linkedin.com/in/ethan-gardner-06261988/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Biomated Solutions LLC",
+      "position": "Senior Systems Engineer",
+      "startDate": "2021-01-31",
+      "endDate": "",
+      "highlights": [],
+      "summary": "Biomated Solutions services a wide variety of clients. Most work consists of a mixture of Hardware, Software, and Mechanical design. Project's range in size from multi-year development to next day quick turn solutions.\n\nDevelopment of custom firmware utilizing the stm32 series of microcontroller's. All firmware is written in C and utilizes a wide array of communication protocols depending on the project most commonly SPI, I2C, UART, USB-CDC, and Modbus RTU.\n\nDevelopment of embedded GUI's in PyQt5, QML, and Qt.\n\nDevelopment of web interfaces in React with TypeScript and server's using Python.\n\nElectrical Design using OrCad for items ranging from PCB's to Control Cabinets and Cables.\n\nMechanical Design using AutoDesk Inventor.\n\nHardware Debugging using Logic Analyzer, Oscilloscope, DMM, Digital Power Supplies, Thermal Imaging Camera, etc.\n\nDevelopment of Control and Automation System's using CODESYS running on WAGO PLC's and FESTO PLC's\n\nCommonly Used Hardware:\nToradex, Raspberry Pi, BeagleBone Black, WAGO PFC200",
+      "url": "https://www.linkedin.com/company/biomated-solutions-llc/",
+      "location": "Randolph, New Jersey, United States"
+    },
+    {
+      "name": "Afito.com",
+      "position": "Co-Founder",
+      "startDate": "2018-08-31",
+      "endDate": "",
+      "highlights": [],
+      "summary": "Designed REST API using Node.js, PostgreSQL with Postgis spatial extension and Redis.\n\nDeveloped User Interface for internal tooling with Reactjs for administrative tasks. \nImplemented monthly billing system using Stripe and email notification system using SendGrid.\n\nDeveloped microservices in both Haskell and Python for handling email notification system, billing, housing search suggestions, analytics, and various site cleanup operations, as well as image manipulation via sharp/NodeJS. \n\nDeployed docker containerized site on Digital Ocean with image storage using S3.",
+      "url": "https://www.linkedin.com/company/afito/",
+      "location": "United States"
+    },
+    {
+      "name": "Bio-Chem Fluidics",
+      "position": "New Product Development Engineer",
+      "startDate": "2017-11-30",
+      "endDate": "2021-01-31",
+      "highlights": [],
+      "url": "",
+      "location": "boonton, new Jersey"
+    },
+    {
+      "name": "Ethicon, Inc.",
+      "position": "R&D engineer",
+      "startDate": "2015-05-31",
+      "endDate": "2017-11-30",
+      "highlights": [],
+      "summary": "Developed Control system in C on micro controller for Pulmonary and Abdominal Simulation device used for R&D and Competitive Marketing. \n\nDeveloped User Interface for Pulmonary and Abdominal Simulator in Python and C for control of embedded device over serial. \n\nDeveloped User Interface for viewing test results in Reactjs being served data from a Flask Rest API. \n\nDeveloped and Executed test protocols for various devices in Ethicon's medical device portfolio as well as designed fixtures in Solidworks for testing.",
+      "url": "https://www.linkedin.com/company/ethicon/",
+      "location": "somerville, nj"
+    },
+    {
+      "name": "All Country Apparel",
+      "position": "Full Stack Developer",
+      "startDate": "2017-06-30",
+      "endDate": "2017-10-31",
+      "highlights": [],
+      "summary": "Designed REST API using Node.js and Postgres.\n\nDeveloped User Interface for internal tooling with React.js and Redux. \n\nImplemented billing system using stripe.\n\nDeployed site on Digital Ocean with image storage using AWS S3.",
+      "url": "",
+      "location": "United States"
+    },
+    {
+      "name": "Stryker",
+      "position": "Research Project",
+      "startDate": "2016-09-30",
+      "endDate": "2017-05-31",
+      "highlights": [],
+      "summary": "Helped delegate subprojects and managed progress in order to meet deadlines. \n\nDesign of fixture for GAIT simulation on Stryker ExFix device for fatigue testing purposes. \n\nSoftware Design for PID controller and GUI design for GAIT simulator device.\n\nDesign of Personalized GAIT force reader to fit GAIT cycle to simulate individuals GAIT patterns.",
+      "url": "https://www.linkedin.com/company/stryker/",
+      "location": "Mahwah"
+    },
+    {
+      "name": "Animas Co",
+      "position": "Process Engineer",
+      "startDate": "2015-05-31",
+      "endDate": "2015-09-30",
+      "highlights": [],
+      "summary": "Led effort to implement Training Within industry deployment of all manufacturing work instructions.\n\nProgrammed a document tree in order to maintain accurate work instruction records.\n\nImproved processes with Taylor studies, Six Sigma, and LEAN techniques.\n\nObtained TWI (Training within Industry) certification. \n\nLed many IQ’s, PQ’s, and OQ’s for various projects.",
+      "url": "",
+      "location": "West Chester, Pennsylvania"
+    },
+    {
+      "name": "Scalable Solutions Group ",
+      "position": "R&D Engineer",
+      "startDate": "2014-09-30",
+      "endDate": "2015-02-28",
+      "highlights": [],
+      "summary": "Designed Graphic User Interface in VB.Net allowing for touch screen control of a Hair Follicle Extraction unit.\n\nDeveloped an Arduino development board using C++ for control of relays and other control elements.\n\nDeveloped SolidWorks models for Meibomian eye patch design and prototype assembly.",
+      "url": "",
+      "location": "United States"
+    },
+    {
+      "name": "Animas Corporation",
+      "position": "Manufacturing Engineer",
+      "startDate": "2014-05-31",
+      "endDate": "2014-09-30",
+      "highlights": [],
+      "summary": "Used LEAN and Six Sigma techniques to obtain maximum efficiency of multiple product lines.\n\nHelped design metric monitoring devices, and various test equipment.\n\nMore than doubled productivity of kitting procedure by utilizing Taylor studies.\n\nConducted and planned protocol for multiple engineering studies to increase efficiency and determine root-cause analysis.\n\nWorked extensively with Supply Chain Management, Quality Control, and Incoming Quality Control for demand planning and preparation.",
+      "url": "",
+      "location": "West Chester, Pennsylvania"
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "Rutgers, The State University of New Jersey-New Brunswick",
+      "area": "Biomedical Engineering",
+      "studyType": "Biomedical Engineering",
+      "startDate": "2013-12-31",
+      "endDate": "2017-12-31",
+      "score": "",
+      "courses": []
+    }
+  ],
+  "awards": [],
+  "certificates": [],
+  "publications": [],
+  "skills": [
+    {
+      "name": "New Business Development",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "JavaScript",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "SOLIDWORKS",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Design for Manufacturing",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Geometric Dimensioning & Tolerancing",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "C (Programming Language)",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "TypeScript",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "OrCAD",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Hardware",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "docker",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Haskell",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Design Failure Mode and Effect Analysis (DFMEA)",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "ISO 9001",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Python (Programming Language)",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "LabVIEW",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Autodesk Inventor",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Node.js",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "React.js",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Amazon Web Services (AWS)",
+      "level": "",
+      "keywords": []
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native Speaker"
+    }
+  ],
+  "interests": [],
+  "references": [],
+  "projects": [],
+  "meta": {
+    "version": "v1.0.0",
+    "canonical": "https://github.com/jsonresume/resume-schema/blob/v1.0.0/schema.json"
+  }
+}
