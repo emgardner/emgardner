@@ -11,8 +11,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^5.0.0",
     "@astrojs/mdx": "^0.14.0",
-    "astro": "^1.8.0",
+    "astro": "^1.9.1",
     "jsonresume-theme-caffeine": "^1.2.3",
     "normalize.css": "^8.0.1"
   }
