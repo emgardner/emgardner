@@ -7,56 +7,53 @@ const title = "About"
 	title={title}
 >
   <h1>Hi I'm Ethan</h1>
-  <text>
-     I'm an engineer of sorts, I grew up in a small town in the suburbs of Philadelphia, went to school for Biomedical Engineering at Rutgers University and now live in Morristown, New Jersey.
-     <br/>
-     <br/>
-     I am currently working in the systems engineering field, and trying to figure out what to do with the rest of my life.
-     <br/>
-     <br/>
-     I enjoy working on Software, Electrical, and Mechanical projects.
-     <br/>
-     <br/>
-     In my freetime you can find me programming, working on side projects, backpacking, or doing some kind of physical activity.
-     <br/>
-     <br/>
-  </text>
+
+  <h2>Who am I?</h2>
+  <span>
+   I'm an engineer of sorts, I grew up in a small town in the suburbs of Philadelphia, went to school for Biomedical Engineering at Rutgers University and now live in Morristown, New Jersey/ I am currently working as a Senior Systems Engineer for <b>Biomated Solutions</b> doing a wide variety of engineering tasks. I like to work the whole stack and enjoy doing everything from the PCB design all the way up to the User Interface. Whether that's good or not? I don't know, but it certainly has helped introduce me to a lot of new things. My hope is to write about some of those thing's in the hopes of reciprocating the help I've received from others along the way.
+   <br />
+   <br />
+   Another hope of mine is that by writing on here I will refine my prose, as well as further explore idea's I have. 
+  </span>
+  <!--
+  <span>
+   In my freetime you can find me programming, working on side projects, backpacking, or doing some kind of physical activity.
+  </span>
+  -->
   <div class="column">
-  <img id="me" src="/assets/about/ethan-hawaii.jpg" />
-  <span><i>Waimea Canyon, HI</i></span>
+    <img id="me" src="/assets/about/ethan-hawaii.jpg" />
+    <span id="caption"><i>Waimea Canyon, HI</i></span>
   </div>
-
   <section>
-      <div class="tools">
-        <span>Tools i use</span>
-        <div>
-          <div id="sidebar"></div>
-          <ul>
-            <li><b>Operating System:</b> Ubuntu</li>
-            <li><b>Terminal:</b> ZSH/TMUX</li>
-            <li><b>Text Editor:</b> Neovim</li>
-            <li><b>EDA:</b> OrCAD Capture/KiCAD</li>
-            <li><b>CAD:</b> Inventor/Fusion360</li>
-          </ul>
-        </div>
+    <div class="tools">
+      <span>Tools i use</span>
+      <div>
+        <div id="sidebar"></div>
+        <ul>
+          <li><b>Operating System:</b> Ubuntu</li>
+          <li><b>Terminal:</b> ZSH/TMUX</li>
+          <li><b>Text Editor:</b> Neovim</li>
+          <li><b>EDA:</b> OrCAD Capture/KiCAD</li>
+          <li><b>CAD:</b> Inventor/Fusion360</li>
+        </ul>
       </div>
-
-      <div class="tools">
-        <span>Languages I'm comfortable with in no specific order</span>
-        <div>
-          <div id="sidebar"></div>
-          <ul>
-            <li>Rust</li>
-            <li>C++</li>
-            <li>C</li>
-            <li>Haskell</li>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>QML</li>
-          </ul>
-        </div>
+    </div>
+    <div class="tools">
+      <span>Languages I'm comfortable with in no specific order</span>
+      <div>
+        <div id="sidebar"></div>
+        <ul>
+          <li>Rust</li>
+          <li>C++</li>
+          <li>C</li>
+          <li>Haskell</li>
+          <li>JavaScript</li>
+          <li>Python</li>
+          <li>QML</li>
+        </ul>
       </div>
-    </section>
+    </div>
+  </section>
 
   <section>
     <span>
@@ -156,12 +153,22 @@ const title = "About"
 
   #me {
    max-width: 100%;
+   margin-top: 12px;
   } 
 
   @media (min-width: 360px) {
     #me {
       max-width: 336px;
     }
+  }
+
+  span {
+    text-align: left;
+  }
+
+  #caption {
+   width: 100%;
+   text-align: center;
   }
 
   .tools {
@@ -197,8 +204,4 @@ const title = "About"
    margin: 0px;
   }
 
-  span {
-   width: 100%;
-   text-align: center;
-  }
 </style> 

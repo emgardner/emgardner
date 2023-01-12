@@ -1,0 +1,29 @@
+---
+import Post from "./Post.astro";
+const posts = await Astro.glob("../pages/posts/**/*.mdx");
+
+const getRealImage = (postLocation: string, imageLocation: string): string => {
+	let post = postLocation.split("/").slice(2);
+	let image = imageLocation.split("/");
+	post[post.length - 1] = image[image.length - 1]
+	let result = ["", "assets", ...post].join("/")
+	return result
+}
+
+
+---
+<div class="flex flex-col">
+	{
+		posts.map((x) => {
+			return(
+				<Post
+					url={x.url}
+					hero={getRealImage(x.url, x.frontmatter.hero)}
+					title={x.frontmatter.title}
+					description={x.frontmatter.description}
+					date={x.frontmatter.date}
+				/>
+			)
+		})
+	}
+</div>
