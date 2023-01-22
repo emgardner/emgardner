@@ -1,19 +1,21 @@
 --- 
 title: Making an Embedded Rust Driver on the STM32 bluepill
-hero: ./Backgroung.jpg
+hero: ./Background.jpg
+thumbnail: ./Thumbnail.png
 description: How i designed an 
 layout: ../../../layouts/PostLayout.astro
 tags: [ rust, embedded, stm32, microcontrollers ]
 date: 01-01-2022
+draft: true
 ---
+import Signup from '../../../components/Signup.astro';
 
 
-# Designing an embedded driver with rust on the STM32 Bluepill
+# Designing an embedded device driver with rust on the STM32 Bluepill
 
+![Ferris on an MCU](/assets/embedded-driver-in-rust/Background.jpg)
 
-![Tux, the Linux mascot](/assets/embedded-driver-in-rust/Background.jpg)
-
-So I've recently been using rust for around the last few month's and I've really been enjoying it. A lot of my day to day work consists of writing device drivers for various hardware/software platforms. I've been really wanting to take a stab at writing these in rust, since most of the time i am using C/C++.  
+Recently i've using rust for around the last few month's and I've really been enjoying it. A lot of my day to day work consists of writing device drivers for various hardware/software platforms. I've been really wanting to take a stab at writing these in rust, since most of the time i am using C/C++.  
 
 I've got a few ADXL343's laying around so i thought maybeI'll just give this a go on my own and I'd write up my efforts in the event that anyone else was in a similar situation. There's an existing library [](https://docs.rs/adxl343/latest/adxl343/) already so by no means am I endorsing anyone to use this code, but feel free to follow along.
 
@@ -51,5 +53,8 @@ $ cargo install cargo-flash
 $ cargo init rusty-blink
 $ cargo add cortex-m cortex-m-rt
 ```
+
+
+<Signup />
 
 

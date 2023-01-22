@@ -1,23 +1,30 @@
 ---
+import { toAttributeString } from 'astro/dist/runtime/server/render/util';
+
 export interface Props {
 	url: string;
-	hero: string;
+	thumbnail: string;
 	title: string;
 	description: string;
 	date: string;
+	tags: string[];
 }
 
-const { url, hero, title, description, date } = Astro.props;
-// box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-// transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+const { url, thumbnail, title, description, date, tags } = Astro.props;
 ---
 
-<a href={url} class="flex flex-wrap wrap mb-8">
-	<img src={hero} class="hidden max-h-32 mr-3 sm:block max-h-80"/>
-	<div class="flex flex-col">
+<a href={url} class="flex flex-wrap wrap mb-8 w-full sm:flex-nowrap relative pb-12">
+	<img src={thumbnail} class="hidden max-h-32 mr-3 sm:block max-w-100 rounded"/>
+	<div class="flex flex-col flex-1">
+		<div class="flex my-2">
+		{  tags.map((t) => {
+					return <span class="border border-white mx-1 p-1 rounded">{t}</span>	
+				})
+		}
+		</div>
 		<span class="w-full text-xl">{title}</h2>
 		<span class="w-full text-sm">{date}</span>
 		<span class="w-full text-base">{description}</span>
 	</div>
-	<div class="bg-white h-px w-full mt-2"></div>
+	<div class="bg-white h-px w-full mt-2 absolute bottom-0 left-0"></div>
 </a>

@@ -17,7 +17,6 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 
 		<title>{title}</title>
-		<!-- UA-155315616-1 -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-155315616-1"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
@@ -32,11 +31,13 @@ const { title } = Astro.props;
 			<Nav/>
 			<slot />
 		</div>
+		<!--
 		<footer>
 			<a  href={contact.linkedin}><img href={contact.linkedin} src="/assets/socials/linkedin.png" /></a>
 			<a  href={contact.twitter}><img href={contact.twitter} src="/assets/socials/twitter.png" /></a>
 			<a  href={contact.reddit}><img href={contact.reddit} src="/assets/socials/reddit.png" /></a>
 		</footer>
+		-->
 	</body>
 </html>
 <style is:global>
