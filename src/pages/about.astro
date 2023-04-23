@@ -6,140 +6,97 @@ const title = "About"
 <BaseLayout
 	title={title}
 >
-  <h1>Hi I'm Ethan</h1>
-
-  <h2>Who am I?</h2>
-  <span>
-   I'm an engineer of sorts, I grew up in a small town in the suburbs of Philadelphia, went to school for Biomedical Engineering at Rutgers University and now live in Morristown, New Jersey/ I am currently working as a Senior Systems Engineer for <b>Biomated Solutions</b> doing a wide variety of engineering tasks. I like to work the whole stack and enjoy doing everything from the PCB design all the way up to the User Interface. Whether that's good or not? I don't know, but it certainly has helped introduce me to a lot of new things. My hope is to write about some of those thing's in the hopes of reciprocating the help I've received from others along the way.
-   <br />
-   <br />
-   Another hope of mine is that by writing on here I will refine my prose, as well as further explore idea's I have. 
-  </span>
-  <!--
-  <span>
-   In my freetime you can find me programming, working on side projects, backpacking, or doing some kind of physical activity.
-  </span>
-  -->
-  <div class="column">
-    <img id="me" src="/assets/about/ethan-hawaii.jpg" />
-    <span id="caption"><i>Waimea Canyon, HI</i></span>
-  </div>
-  <section>
-    <div class="tools">
-      <span>Tools i use</span>
-      <div>
-        <div id="sidebar"></div>
-        <ul>
-          <li><b>Operating System:</b> Ubuntu</li>
-          <li><b>Terminal:</b> ZSH/TMUX</li>
-          <li><b>Text Editor:</b> Neovim</li>
-          <li><b>EDA:</b> OrCAD Capture/KiCAD</li>
-          <li><b>CAD:</b> Inventor/Fusion360</li>
-        </ul>
+  <div class="flex flex-col w-full items-center">
+    <div class="
+     prose prose-invert 
+     max-w-full
+     sm:max-w-prose
+     sm:prose-sm md:prose-md lg:prose-lg xl:prose-xl 2xl:prose-2xl 
+    ">
+      <h1>Hi I'm Ethan</h1>
+      <h2>Who am I?</h2>
+      <span>
+       I'm an engineer of sorts, I grew up in the suburbs of Philadelphia, went to school for Biomedical Engineering at Rutgers University and now live in Morristown, New Jersey. I am currently working as a Senior Systems Engineer for <b>Biomated Solutions</b> doing a wide variety of engineering tasks. I like to work the whole stack and enjoy doing everything from the PCB design all the way up to the User Interface. Whether that's good or not? I don't know, but it certainly has helped introduce me to a lot of new things. My hope is to write about some of those thing's in the hopes of reciprocating the help I've received from others along the way.
+       <br />
+       <br />
+       Another hope of mine is that by writing on here I will refine my prose, as well as further explore idea's I have. 
+      </span>
+      <!--
+      <span>
+       In my freetime you can find me programming, working on side projects, backpacking, or doing some kind of physical activity.
+      </span>
+      -->
+      <div class="column">
+        <img id="me" src="/assets/about/ethan-hawaii.jpg" />
+        <span id="caption"><i>Waimea Canyon, HI</i></span>
       </div>
-    </div>
-    <div class="tools">
-      <span>Languages I'm comfortable with in no specific order</span>
-      <div>
-        <div id="sidebar"></div>
-        <ul>
-          <li>Rust</li>
-          <li>C++</li>
-          <li>C</li>
-          <li>Haskell</li>
-          <li>JavaScript</li>
-          <li>Python</li>
-          <li>QML</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <span>
-      I started learning software my sophmore year of college in 2016, and I've been hooked ever since. I love working on software that makes things move but I also enjoy just moving bits around. I also have an interest in hardware as well. I find the relationship between hardware and software to be a fascinating design space. 
-    </span>
-  </section>
-
-
-
-  <!-- 
-    Section about hiking
-    Section about goals 
-    Section about purpose/value
-    Section about this blog
-  -->
-  <!--
-  <section>
-    <div id="timeline">
-      <div id="timeline-bar"></div>
-      <div class="timeline-item">
-        <img src="/assets/about/clearview.png"/>
-        <div class="timeline-info">
-          <span>Clearview Highschool</span>
-          <span>2010-2013</span>
+      <section>
+        <div class="tools">
+          <span>Tools i use</span>
+          <div>
+            <div id="sidebar"></div>
+            <ul>
+              <li><b>Operating System:</b> Ubuntu</li>
+              <li><b>Terminal:</b> ZSH/TMUX</li>
+              <li><b>Text Editor:</b> Neovim</li>
+              <li><b>EDA:</b> OrCAD Capture/KiCAD</li>
+              <li><b>CAD:</b> Inventor/Fusion360</li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <img src="/assets/about/ru.svg"/>
-      <img src="/assets/about/ethicon.webp"/>
-      <img src="/assets/about/arcmed.svg"/>
-      <img src="/assets/about/biomated.png"/>
-    </div>
-  </section>
-  -->
+        <div class="tools">
+          <span>Languages I'm comfortable with in no specific order</span>
+          <div>
+            <div id="sidebar"></div>
+            <ul>
+              <li>Rust</li>
+              <li>C++</li>
+              <li>C</li>
+              <li>Haskell</li>
+              <li>JavaScript</li>
+              <li>Python</li>
+              <li>QML</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
+      <section>
+        <span>
+          I began learning software as an autodidact my sophmore year of college, and I've been hooked since. I love working on software that makes things move, but enjoy just moving bits around. I have an interest in hardware as well and find the intersection between hardware and software to be a fascinating design space. 
+        </span>
+      </section>
+
+
+
+      <!-- 
+        Section about hiking
+        Section about goals 
+        Section about purpose/value
+        Section about this blog
+      -->
+      <!--
+      <section>
+        <div id="timeline">
+          <div id="timeline-bar"></div>
+          <div class="timeline-item">
+            <img src="/assets/about/clearview.png"/>
+            <div class="timeline-info">
+              <span>Clearview Highschool</span>
+              <span>2010-2013</span>
+            </div>
+          </div>
+          <img src="/assets/about/ru.svg"/>
+          <img src="/assets/about/ethicon.webp"/>
+          <img src="/assets/about/arcmed.svg"/>
+          <img src="/assets/about/biomated.png"/>
+        </div>
+      </section>
+      -->
+    </div>
+  </div>
 </BaseLayout>
 <style>
-  /*
-  #timeline {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    width: 100%;
-  }
-
-  #timeline-bar {
-    position: absolute;
-    left: 0;
-    top: 25px;
-    background-color: white;
-    height: calc(100% - 50px);
-    width: 4px;
-    border-radius: 2px;
-  }
-
-  #timeline > img {
-    max-height: 50px;
-    width: auto;
-    margin: 12px 12px;
-  }
-
-  .timeline-item > img {
-    max-height: 50px;
-    width: auto;
-    margin: 12px 0px;
-  }
-
-  .timeline-item {
-    display: flex;
-    width: 100%;
-    align-items: center;
-  }
-
-  .timeline-info {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .timeline-info > span {
-    flex: 1;
-    margin-left: 12px;
-    text-align: left;
-  }
-  */
-
   .row {
     display: flex;
     flex-wrap: wrap;

@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Resume"
+import * as resume from '../../resume.json'
+
+console.log(resume)
+---
+<BaseLayout>
+  {
+    resume.work.map((x) => {
+      return(
+        <div class="flex border-2 border-white">
+          <span>{x.name}</span>
+          <span>{x.position}</span>
+          <span>{x.startDate} - {x.endDate}</span>
+          <span>{x.summary}</span>
+        </div>
+      )
+    })
+  }
+</BaseLayout>

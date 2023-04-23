@@ -7,10 +7,10 @@ import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [
-    mdx(), 
-    tailwind({})
-  ],
+  integrations: [mdx(), tailwind({}), sitemap()],
   site: 'https://emgardner.github.io'
 });

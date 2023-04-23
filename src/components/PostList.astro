@@ -1,8 +1,10 @@
 ---
+import A from "./CaptionImageastro";
 import Post from "./Post.astro";
 const posts = await Astro.glob("../pages/posts/**/*.mdx");
 
 const getRealImage = (postLocation: string, imageLocation: string): string => {
+  console.log(postLocation, imageLocation)
 	let post = postLocation.split("/").slice(2);
 	let image = imageLocation.split("/");
 	post[post.length - 1] = image[image.length - 1]
@@ -14,10 +16,7 @@ const getRealImage = (postLocation: string, imageLocation: string): string => {
 ---
 <div>
 	{
-		posts.map((x) => {
-			if (x.frontmatter.draft) {
-				return <></>
-			} else {
+		posts.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)).filter(x => !x.frontmatter.draft ).map((x) => {
 			return(
 				<Post
 					tags={x.frontmatter.tags}
@@ -28,7 +27,6 @@ const getRealImage = (postLocation: string, imageLocation: string): string => {
 					date={x.frontmatter.date}
 				/>
 			)
-			}
 		})
 	}
 </div>
