@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
 
 const title = "About"
 ---
@@ -7,35 +8,39 @@ const title = "About"
 	title={title}
 >
   <div class="flex flex-col w-full items-center">
-    <div class="
-     prose prose-invert 
-     max-w-full
-     sm:max-w-prose
-     sm:prose-sm md:prose-md lg:prose-lg xl:prose-xl 2xl:prose-2xl 
-    ">
-      <h1>Hi I'm Ethan</h1>
-      <h2>Who am I?</h2>
-      <span>
-       I'm an engineer of sorts, I grew up in the suburbs of Philadelphia, went to school for Biomedical Engineering at Rutgers University and now live in Morristown, New Jersey. I am currently working as a Senior Systems Engineer for <b>Biomated Solutions</b> doing a wide variety of engineering tasks. I like to work the whole stack and enjoy doing everything from the PCB design all the way up to the User Interface. Whether that's good or not? I don't know, but it certainly has helped introduce me to a lot of new things. My hope is to write about some of those thing's in the hopes of reciprocating the help I've received from others along the way.
-       <br />
-       <br />
-       Another hope of mine is that by writing on here I will refine my prose, as well as further explore idea's I have. 
-      </span>
-      <!--
-      <span>
-       In my freetime you can find me programming, working on side projects, backpacking, or doing some kind of physical activity.
-      </span>
-      -->
-      <div class="column">
-        <img id="me" src="/assets/about/ethan-hawaii.jpg" />
-        <span id="caption"><i>Waimea Canyon, HI</i></span>
+      <Section>
+      <div class="flex flex-col w-full space-y-4">
+        <h1>Hi I'm Ethan</h1>
+        <span>
+         I'm an engineer. I grew up in southern New Jersey, and went to school for Biomedical Engineering at Rutgers University.
+        
+         I currently live in Morristown, NJ and am working as a Senior Systems Engineer for <b>Biomated Solutions</b> doing a wide variety of engineering tasks. 
+        </span>
+        <span>
+         I like to work at every level of the stack and enjoy doing everything from PCB design all the way up to the User Interface. Whether that's good or not? I don't know, but it certainly has helped introduce me to a lot of new things. 
+        
+         My hope is to write about some of those thing's in the hopes of reciprocating the help I've received from others along the way.
+
+         Another hope of mine is that by writing on here I will refine my prose, as well as further explore idea's I have. 
+        </span>
+
+        <span>
+         In my freetime you can find me programming, working on side projects, backpacking, or doing some kind of physical activity mostly running nowadays.
+        </span>
       </div>
-      <section>
-        <div class="tools">
-          <span>Tools i use</span>
-          <div>
+    </Section>
+    <Section>
+        <div class="flex flex-col w-full items-center">
+          <img class="w-full max-w-[360px]" src="/assets/about/ethan-hawaii.jpg" />
+          <span><i>Waimea Canyon, HI</i></span>
+        </div>
+    </Section>
+    <Section>
+        <div class="flex flex-col w-full relative py-8 space-y-4">
+          <span class="text-xl text-semibold">Tools i use</span>
+          <div class="flex flex-col relative">
             <div id="sidebar"></div>
-            <ul>
+            <ul class="list-none px-[12px]">
               <li><b>Operating System:</b> Ubuntu</li>
               <li><b>Terminal:</b> ZSH/TMUX</li>
               <li><b>Text Editor:</b> Neovim</li>
@@ -44,11 +49,11 @@ const title = "About"
             </ul>
           </div>
         </div>
-        <div class="tools">
-          <span>Languages I'm comfortable with in no specific order</span>
-          <div>
+        <div class="flex flex-col w-full relative py-8 space-y-4">
+          <span class="text-xl text-semibold">Languages I'm comfortable with in no specific order</span>
+          <div class="flex flex-col relative">
             <div id="sidebar"></div>
-            <ul>
+            <ul class="list-none px-[12px]">
               <li>Rust</li>
               <li>C++</li>
               <li>C</li>
@@ -59,75 +64,16 @@ const title = "About"
             </ul>
           </div>
         </div>
-      </section>
+    </Section>
 
-      <section>
+    <Section>
         <span>
           I began learning software as an autodidact my sophmore year of college, and I've been hooked since. I love working on software that makes things move, but enjoy just moving bits around. I have an interest in hardware as well and find the intersection between hardware and software to be a fascinating design space. 
         </span>
-      </section>
-
-
-
-      <!-- 
-        Section about hiking
-        Section about goals 
-        Section about purpose/value
-        Section about this blog
-      -->
-      <!--
-      <section>
-        <div id="timeline">
-          <div id="timeline-bar"></div>
-          <div class="timeline-item">
-            <img src="/assets/about/clearview.png"/>
-            <div class="timeline-info">
-              <span>Clearview Highschool</span>
-              <span>2010-2013</span>
-            </div>
-          </div>
-          <img src="/assets/about/ru.svg"/>
-          <img src="/assets/about/ethicon.webp"/>
-          <img src="/assets/about/arcmed.svg"/>
-          <img src="/assets/about/biomated.png"/>
-        </div>
-      </section>
-      -->
-    </div>
+    </Section>
   </div>
 </BaseLayout>
 <style>
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #me {
-   max-width: 100%;
-   margin-top: 12px;
-  } 
-
-  @media (min-width: 360px) {
-    #me {
-      max-width: 336px;
-    }
-  }
-
-  span {
-    text-align: left;
-  }
-
-  #caption {
-   width: 100%;
-   text-align: center;
-  }
-
   .tools {
     position: relative;
     padding-left: 0px;

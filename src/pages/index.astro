@@ -3,23 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PostList from "../components/PostList.astro";
 const title = "Home"
 ---
-<style>
-	.posts {
-		display: flex;
-		flex-direction: column;
-	}
-
-	h2 {
-		margin: 0px;
-	}
-
-</style>
 <BaseLayout
 	title={title}
 >
 	<div class="flex flex-col align-center">
-		<h1>Posts</h1>
-
 		<PostList/>
 	</div>
 </BaseLayout>
