@@ -1,19 +1,19 @@
---- 
+---
 title: Embedded Rust Serial
 hero: ./Background.jpg
 thumbnail: ./Thumbnail.png
 description: How to use the UART in embedded rust
 layout: ../../../layouts/PostLayout.astro
-tags: [ rust, embedded, stm32, microcontrollers ]
+tags: [rust, embedded, stm32, microcontrollers]
 date: 01-23-2022
 draft: false
 ---
 
 # How to use the UART peripheral in embedded Rust
 
-The UART/USART is one of the most ubiquitously used peripherals in embedded device's and serves the purpose of establishing communication between different devices. In the post we will look at how we can use the UART to communicate with our computer. 
+The UART/USART is one of the most ubiquitously used peripherals in embedded device's and serves the purpose of establishing communication between different devices. In the post we will look at how we can use the UART to communicate with our computer.
 
-We will go through a few different types of serial communcation and see what the pros and cons of each are. Let's start our with the easiest to implement, we'll also take a look at a new crate **heapless** so we can use versions of some of the familiar types of containers that we're used to like **String** and **Vec**. 
+We will go through a few different types of serial communcation and see what the pros and cons of each are. Let's start our with the easiest to implement, we'll also take a look at a new crate **heapless** so we can use versions of some of the familiar types of containers that we're used to like **String** and **Vec**.
 
 I'll be using the NUCLEO-L476RG board which has a built in ST-Link programmer that exposes the USART2 peripheral as a **COM PORT**. We will setup the project the same way we did in the other posts with this basic skeleton:
 
@@ -31,7 +31,7 @@ fn main() -> ! {
     // Get a singleton to the CorePeripherals of our device. Coreperipherals differ from Peripherals
     // the CorePeripherals are common to the cortex-m family.
     let cp = stm32l4xx_hal::device::CorePeripherals::take().unwrap();
-    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members 
+    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members
     let mut flash = p.FLASH.constrain();
     // Acquire clock control handle
     let mut rcc = p.RCC.constrain();
@@ -79,7 +79,7 @@ Now we can add in our serial specific code and get to work. I will be using the 
     loop {
         // Read a character if it's available
         match serial.read() {
-            Err(e) => (), 
+            Err(e) => (),
             Ok(c) => {
                 // If we got a character add it to our buffer
                 buff[idx] = c;
@@ -148,10 +148,9 @@ If you run this script you should see the following on the terminal:
 115
 ```
 
-Perfect we get our 4 byte message's (3 ints, 1 newline) and echo them out. Now let's do something a little bit more useful with this information let's change the length of the LED's on time based on our recevied message. We are sending over ascii numeric values. We could send over raw bytes and process them but dealing with the ascii values gives us a fun little challenge. Ascii is a character encoding standard for electronic communication. ASCII codes represent text in computers. 
+Perfect we get our 4 byte message's (3 ints, 1 newline) and echo them out. Now let's do something a little bit more useful with this information let's change the length of the LED's on time based on our recevied message. We are sending over ascii numeric values. We could send over raw bytes and process them but dealing with the ascii values gives us a fun little challenge. Ascii is a character encoding standard for electronic communication. ASCII codes represent text in computers.
 
-
-![ASCII Table](/assets/embedded-rust-serial/ASCII-Table.png)
+![ASCII Table](/assets/obsidian/ascii-table.png)
 
 How do we represent the number 1000 with ascii text? It's equivalent to the u8 byte array of [31, 30, 30, 30]. There are many methods to decoding this but let's roll our own for fun:
 
@@ -169,7 +168,7 @@ Here we parse the value to a digit and if it isn't valid we filter it out. We th
 
 ```rust
         match serial.read() {
-            Err(e) => (), 
+            Err(e) => (),
             Ok(c) => {
                 // If we got a character add it to our buffer
                 buff[idx] = c;
@@ -192,7 +191,7 @@ Here we parse the value to a digit and if it isn't valid we filter it out. We th
             }
 ```
 
-Just to make things a little more noticeable we can change our python script to go to a higher value as well. The next thing we might want to do is not depend on a fixed length set of packets being sent what if we want to send 1000000 or 1. We can approach this in a few different ways. We could wait for an IDLE line timeout period or we can just wait for a specific character or character sequence. In practice a newline or carriage return is often sent respectively, **'\n'**, **'\r'** or they may be both sent **\r\n**. Of course there's still a limit to the size of the buffer that we allocate so we can't accept arbitrarily large numbers but let's cap it at 999999999. 
+Just to make things a little more noticeable we can change our python script to go to a higher value as well. The next thing we might want to do is not depend on a fixed length set of packets being sent what if we want to send 1000000 or 1. We can approach this in a few different ways. We could wait for an IDLE line timeout period or we can just wait for a specific character or character sequence. In practice a newline or carriage return is often sent respectively, **'\n'**, **'\r'** or they may be both sent **\r\n**. Of course there's still a limit to the size of the buffer that we allocate so we can't accept arbitrarily large numbers but let's cap it at 999999999.
 
 ```rust
     // Size of our buffer
@@ -208,7 +207,7 @@ Just to make things a little more noticeable we can change our python script to 
     loop {
         // Read a character if it's available
         match serial.read() {
-            Err(_e) => (), 
+            Err(_e) => (),
             Ok(c) => {
                 // If our buffer is the size of our frame process it or if we receive a new line
                 if c == ('\n' as u8) || idx == (buff_len - 1) {
@@ -237,9 +236,9 @@ Just to make things a little more noticeable we can change our python script to 
 
 ```
 
-We change our **buff_len** variable to be 9 and we add one extra check to our character match to see if **c == '\n'** and that's it. If you wanted to try an even better but more complicated apporach you can try to implement the classic ring buffer receiver. 
+We change our **buff_len** variable to be 9 and we add one extra check to our character match to see if **c == '\n'** and that's it. If you wanted to try an even better but more complicated apporach you can try to implement the classic ring buffer receiver.
 
-Now let's say we wanted to handle all our serial communication inside an interrupt handler. How would we do this? Well it's not all that much of a change. Let's see what event's we have available. 
+Now let's say we wanted to handle all our serial communication inside an interrupt handler. How would we do this? Well it's not all that much of a change. Let's see what event's we have available.
 
 ```rust
 pub enum Event {
@@ -262,15 +261,14 @@ ReceiverTimeout
   Receiver timeout
 ```
 
-
 The Event we want to handle first is the Rxne (new data available). Let's take a stab at that. First we change the imports
 
 ```rust
 use stm32l4xx_hal::{
-    delay::Delay, 
-    pac::{self, TIM2, USART2}, 
+    delay::Delay,
+    pac::{self, TIM2, USART2},
     interrupt,
-    prelude::*, 
+    prelude::*,
     serial::{self, Serial},
     stm32,
     timer::{Timer, Event},
@@ -278,8 +276,8 @@ use stm32l4xx_hal::{
 };
 ```
 
+Next let's get global access to the serial handle:
 
-Next let's get global access to the serial handle: 
 ```rust
 static SERIAL: Mutex<
     RefCell<Option<Serial<USART2, (PA2<Alternate<PushPull, 7>>, PA3<Alternate<PushPull, 7>>)>>>,
@@ -316,7 +314,7 @@ fn USART2() {
                 // Get message reference
                 let mut msg_ref = BUFFER.borrow(cs).borrow_mut();
                 let mut msg = msg_ref.deref_mut();
-                // Check for newline if not then push to the buffer and if 
+                // Check for newline if not then push to the buffer and if
                 // the push exceeds the size of the buffer we process the message
                 if (c as char) == '\n' || !msg.push(c).is_ok() {
                    // Set flag to process message
@@ -332,7 +330,7 @@ fn USART2() {
 
 ```
 
-Our main loop will process the buffer whenever message received is set to true and then reset it to false. 
+Our main loop will process the buffer whenever message received is set to true and then reset it to false.
 
 ```rust
         if MESSAGE_RECEIVED.load(Ordering::Relaxed) {
@@ -348,7 +346,7 @@ Our main loop will process the buffer whenever message received is set to true a
                     timestamp = millis();
                     // Format str with the parsed value just so we can be sure and send it
                     write!(ser, "{}\n", new_timeout);
-                    // Clear old message 
+                    // Clear old message
                     msg.clear();
                     // Reinitiate listening for interrupts
                     ser.listen(stm32l4xx_hal::serial::Event::Rxne);
@@ -357,7 +355,6 @@ Our main loop will process the buffer whenever message received is set to true a
             MESSAGE_RECEIVED.store(false, Ordering::Relaxed);
         }
 ```
-
 
 And the final code looks like this:
 
@@ -437,7 +434,7 @@ fn USART2() {
                 // Get message reference
                 let mut msg_ref = BUFFER.borrow(cs).borrow_mut();
                 let mut msg = msg_ref.deref_mut();
-                // Check for newline if not then push to the buffer and if 
+                // Check for newline if not then push to the buffer and if
                 // the push exceeds the size of the buffer we process the message
                 if (c as char) == '\n' || !msg.push(c).is_ok() {
                    // Set flag to process message
@@ -547,7 +544,7 @@ fn main() -> ! {
                     timestamp = millis();
                     // Format str with the parsed value just so we can be sure and send it
                     write!(ser, "{:?}\n", new_timeout);
-                    // Clear old message 
+                    // Clear old message
                     msg.clear();
                     // Reinitiate listening for interrupts
                     ser.listen(stm32l4xx_hal::serial::Event::Rxne);
@@ -564,39 +561,32 @@ fn main() -> ! {
 }
 ```
 
-Now that we've gotten that taken care of let's look at using the DMA interface on our chip we will do this two different ways. First we will wire up the DMA without using the HAL so that we can see how the peripheral is configured and then we will look at setting up DMA transfers using the **FrameSender** and **FrameReceiver** interface's. An important note to those using boards that are not in the stm32l4 family. There's a chance that your crate will not provide the **FrameSender** and **FrameReceiver** interfaces. 
+Now that we've gotten that taken care of let's look at using the DMA interface on our chip we will do this two different ways. First we will wire up the DMA without using the HAL so that we can see how the peripheral is configured and then we will look at setting up DMA transfers using the **FrameSender** and **FrameReceiver** interface's. An important note to those using boards that are not in the stm32l4 family. There's a chance that your crate will not provide the **FrameSender** and **FrameReceiver** interfaces.
 
 First the hand wiring and i'd like to preface this by saying you should not follow this example in your own code use a battle tested interface, i am using it to illustrate the configuration of the DMA register for those unfamiliar.
 
 The DMA Configuration Register contains the following fields:
 
-| Name        | Bits   | Description                               |
-| ----------- | ------ | -----------                               |
-| RESERVED    | 31:15  |                                           |
-| MEM2MEM     | 14     | Memory to Memory Mode                     |
-| PL          | 13:12  | Priority Level                            |
-| MSIZE       | 11:10  | Data size of each dma transfer            |
-| PSIZE       | 9:8    | Peripheral Size                           |
-| MINC        | 7      | Memory Increment Mode                     |
-| PINC        | 6      | Peripheral Increment Mode                 |
-| CIRC        | 5      | Circular Mode                             |
-| DIR         | 4      | Data Transfer Direction                   |
-| TEIE        | 3      | Transfer Error Interrupt Enable           |
-| HTIE        | 2      | Half Transfer Complete Interrupt Enable   |
-| TCIE        | 1      | Transfer Complete Interrupt Enable        |
-| EN          | 0      | Enable                                    |
+| Name     | Bits  | Description                             |
+| -------- | ----- | --------------------------------------- |
+| RESERVED | 31:15 |                                         |
+| MEM2MEM  | 14    | Memory to Memory Mode                   |
+| PL       | 13:12 | Priority Level                          |
+| MSIZE    | 11:10 | Data size of each dma transfer          |
+| PSIZE    | 9:8   | Peripheral Size                         |
+| MINC     | 7     | Memory Increment Mode                   |
+| PINC     | 6     | Peripheral Increment Mode               |
+| CIRC     | 5     | Circular Mode                           |
+| DIR      | 4     | Data Transfer Direction                 |
+| TEIE     | 3     | Transfer Error Interrupt Enable         |
+| HTIE     | 2     | Half Transfer Complete Interrupt Enable |
+| TCIE     | 1     | Transfer Complete Interrupt Enable      |
+| EN       | 0     | Enable                                  |
 
+![DMA Config](/assets/obsidian/dma-config.png)
 
-![DMA Config](/assets/embedded-rust-serial/DMA_CONFIG.jpeg)
+![DMA Interrupt Status](/assets/obsidian/dma-interrupt-status.png)
 
+![DMA Interrupt Flags](/assets/obsidian/dma-interrupt-flags.png)
 
-![DMA Interrupt](/assets/embedded-rust-serial/DMA_INTERRUPT.png)
-
-![DMA Interrupt Clear](/assets/embedded-rust-serial/DMA_INTERRUPT_CLEAR.png)
-
-```rust
-
-```
-
-
-
+**Work In progress**

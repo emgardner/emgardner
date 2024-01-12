@@ -1,10 +1,10 @@
---- 
+---
 title: Setting up an embedded rust project for STM32
 hero: ./Background.jpg
-thumbnail: ./Thumbnail.png
+thumbnail: Thumbnail.png
 description: How to use cargo to setup an embedded rust project.
-layout: ../../../layouts/PostLayout.astro
-tags: [ rust, embedded, stm32, microcontrollers ]
+// layout: ../../../layouts/PostLayout.astro
+tags: [rust, embedded, stm32, microcontrollers]
 date: 01-20-2022
 draft: false
 ---
@@ -17,14 +17,13 @@ The purpose of this post is to give a brief overview of how to setup an embedded
 - An STM32 board preferrably one with an in built programmer and USB/UART converter like the **NUCLEO** series of board these can be bought for fairly cheap and in my opinion are much nicer than the **Bluepill** [Many can be found here for reasonable cost](https://www.digikey.com/en/product-highlight/s/stmicroelectronics/nucleo-development-boards)
 - A programmer if your board doesn't have one, if you've bought a bluepill from amazon chances are this came in the package.
 
-
-![Nucleo Board](/assets/embedded-rust-from-zero-to-blink/nucleo.jpeg)
-
+![Nucleo Board](/assets/obsidian/nucleo-board.png)
 ### Target Installation
 
-If you haven't installed rust yet do so by following the directions on the official rust site: [Rust Installation Instructions](https://www.rust-lang.org/learn/get-started). The next step will be to install the proper cross-toolchain compiler for the chip that we're using. 
+If you haven't installed rust yet do so by following the directions on the official rust site: [Rust Installation Instructions](https://www.rust-lang.org/learn/get-started). The next step will be to install the proper cross-toolchain compiler for the chip that we're using.
 
 The cross-compilation target that is relevant for each board is listed below:
+
 - Use **thumbv6m-none-eabi** for ARM Cortex-M0 and Cortex-M0+
 - Use **thumbv7m-none-eabi** for ARM Cortex-M3
 - Use **thumbv7em-none-eabi** for ARM Cortex-M4 and Cortex-M7 (no FPU support)
@@ -52,10 +51,11 @@ Now we will get started with making our project.
 ```
 cargo new blinky
 ```
-And now we will install our dependencies. 
+
+And now we will install our dependencies.
 
 ```
-cargo add cortex-m cortex-m-rt embedded-hal panic-halt stm32l4xx-hal 
+cargo add cortex-m cortex-m-rt embedded-hal panic-halt stm32l4xx-hal
 ```
 
 Then we will add the correct feature flags for our MCU to the hal crate based on the board we are using in the end you will have something like the following:
@@ -84,7 +84,7 @@ Let's breifly go through what each of the packages we just installed is doing fo
 - **embedded-hal**
   - This provides some nice traits so that board crates can implement identical API's.
 - **panic-halt**
-  - This crate just provides a panic handler and makes it so that we don't need to implement the panic handler ourself although it's not much the entirety of the crate is the following: 
+  - This crate just provides a panic handler and makes it so that we don't need to implement the panic handler ourself although it's not much the entirety of the crate is the following:
   ```rust
   #![no_std]
   use core::panic::PanicInfo;
@@ -99,10 +99,10 @@ Let's breifly go through what each of the packages we just installed is doing fo
 - **stm32l4xx-hal**
   - This crate provides us with our MCU specifc HAL (Hardware Abstraction Layer). If you are using a different board you can find pany of the other HAL crates under the [stm32-rs](https://github.com/stm32-rs) project
 
-
 Now that we have our crates pulled in we have two last pieces of business until we can get to the fun part of actually writing code.
 
 We will need to configure cargo to build our project properly so we set the build target appropriately and we will need to tell the compiler to use our linker script that well will create. You can find more information about this in the [cortex_m_rt](https://docs.rs/cortex-m-rt/latest/cortex_m_rt/) documentation.
+
 ```
 # .cargo/config
 [build]
@@ -110,9 +110,9 @@ target = "thumbv7em-none-eabi"
 rustflags = [ "-C", "link-arg=-Tlink.x"]
 ```
 
-Lastly we will create a very basic linker script. This is baord specific. If you're unfamiliar with microcontrollers this will always be found in you MCU's datasheets or reference manual. A layout of the memory sections is provided below. By convention RAM starts at 0x2000000 and Flash starts at 0x80000000. 
+Lastly we will create a very basic linker script. This is baord specific. If you're unfamiliar with microcontrollers this will always be found in you MCU's datasheets or reference manual. A layout of the memory sections is provided below. By convention RAM starts at 0x2000000 and Flash starts at 0x80000000.
 
-![STM32 Memory](/assets/embedded-rust-from-zero-to-blink/memory.png)
+![STM32 Memory Bank](/assets/obsidian/stm32-memory-bank.png)
 
 ```
 /* memory.x - Linker script for the STM32L476RGT6 */
@@ -177,6 +177,7 @@ We get this attribute from the following line:
 ```rust
 use cortex_m_rt::entry;
 ```
+
 Next we must specify the panic handling behavior of our code. We use the **panic_halt** crate to provide this for us. Now we can get to the good stuff actually programming our controller.
 
 We will pull in the necessary items from our board level crate so that we can use them in our program.
@@ -188,8 +189,8 @@ use stm32l4xx_hal::{
     delay::Delay,
 };
 ```
-**pac** gives us access to the peripherals of our device. **prelude** pulls in a number of different traits, that you will want to use when writing your code, and **delay::Delay** will allow us to use **SysTick** to create a nice delay for our project we could just as easily implement a simple timer ourselves, but we will look at that later on.
 
+**pac** gives us access to the peripherals of our device. **prelude** pulls in a number of different traits, that you will want to use when writing your code, and **delay::Delay** will allow us to use **SysTick** to create a nice delay for our project we could just as easily implement a simple timer ourselves, but we will look at that later on.
 
 ```rust
 
@@ -200,7 +201,7 @@ fn main() -> ! {
     // Get a singleton to the CorePeripherals of our device. Coreperipherals differ from Peripherals
     // the CorePeripherals are common to the cortex-m family.
     let cp = stm32l4xx_hal::device::CorePeripherals::take().unwrap();
-    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members 
+    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members
     let mut flash = p.FLASH.constrain();
     // Acquire clock control handle
     let mut rcc = p.RCC.constrain();
@@ -223,7 +224,7 @@ fn main() -> ! {
     loop {
         // We use the Toggleable trait to turn on and off the led
         user_led.toggle();
-        // We delay for 500ms 
+        // We delay for 500ms
         timer.delay_ms(500_u16);
         // Repeat
     }
@@ -234,6 +235,7 @@ fn main() -> ! {
 If you're not used to working with MCU's or using, arduino, or vendor provided HAL's a lot of these acronyms will seem opaque. MCU's have a ton of nuance but don't be afraid the documentation around these registers is often very good and is worth taking a look at.
 
 For instance let's take this line of code:
+
 ```rust
 let mut user_led = gpioa.pa5.into_push_pull_output(&mut gpioa.moder, &mut gpioa.otyper);
 ```
@@ -242,23 +244,22 @@ What on earth is **gpioa.moder** and **gpioa.typer**. Well these are registers t
 
 Here we see that the GPIOA_MODER register set's the mode of the GPIO pins on BANK A.
 
-![GPIO REGISTER](/assets/embedded-rust-from-zero-to-blink/gpio_register.png)
+![GPIOA_MODER Register](/assets/obsidian/gpioa_moder-register.png)
 
 That mode is defined by the following bit's:
 
-![GPIO MODER](/assets/embedded-rust-from-zero-to-blink/gpio_config.png)
-
+![GPIO MODE CONFIGURATION](/assets/obsidian/gpio-mode-configuration.png)
 And lastly the type of output is defined here:
 
-![GPIO OTYPER](/assets/embedded-rust-from-zero-to-blink/gpio_otyper.png)
-
+![GPIO OUTPUT CONFIGURATION](/assets/obsidian/gpio-output-configuration.png)
 
 When you hear someone refer to bare-metal programming often what they are referring to is that instead of using a nice method like this:
+
 ```rust
 let mut user_led = gpioa.pa5.into_push_pull_output(&mut gpioa.moder, &mut gpioa.otyper);
 ```
 
-They will individually mask the bits on each register. 
+They will individually mask the bits on each register.
 
 The last step for this is flashing our code to the device.
 
@@ -267,14 +268,3 @@ $ cargo flash --chip stm32l476rg --release
 ```
 
 After that you should see the GPIO on your board flipping every 500ms, and with that we wrap up this post.
-
-
-
-
-
-
-
-
-
-
-

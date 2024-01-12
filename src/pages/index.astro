@@ -1,12 +1,29 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostList from "../components/PostList.astro";
+import Post from "../components/Post.astro";
 const title = "Home"
+
+
+import { getCollection, getEntry } from 'astro:content';
+// const allBlogPosts = await getCollection('blog');
+const allObsidianPosts = await getCollection('obsidian');
+const nonDraftPosts = allObsidianPosts.filter(post => !post.data.draft)
 ---
 <BaseLayout
 	title={title}
 >
 	<div class="flex flex-col align-center">
-		<PostList/>
+		{ nonDraftPosts.map(post => {
+			console.log(post)
+			return (<Post 
+					tags={post.data.tags}
+					url={`/blog/${post.slug}`}
+					thumbnail={`/${post.collection}/${post.slug}/${post.data.thumbnail}`}
+					title={post.data.title}
+					description={post.data.description}
+					date={post.data.date}
+				/>)
+		})}
 	</div>
 </BaseLayout>

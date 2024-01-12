@@ -1,10 +1,10 @@
---- 
+---
 title: GPIO'S in embedded Rust
 hero: ./Background.jpg
 thumbnail: ./Thumbnail.png
 description: How to use gpios in embedded rust
 layout: ../../../layouts/PostLayout.astro
-tags: [ rust, embedded, stm32, microcontrollers ]
+tags: [rust, embedded, stm32, microcontrollers]
 date: 01-22-2022
 draft: false
 ---
@@ -28,7 +28,7 @@ fn main() -> ! {
     // Get a singleton to the CorePeripherals of our device. Coreperipherals differ from Peripherals
     // the CorePeripherals are common to the cortex-m family.
     let cp = stm32l4xx_hal::device::CorePeripherals::take().unwrap();
-    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members 
+    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members
     let mut flash = p.FLASH.constrain();
     // Acquire clock control handle
     let mut rcc = p.RCC.constrain();
@@ -51,7 +51,7 @@ fn main() -> ! {
     loop {
         // We use the Toggleable trait to turn on and off the led
         user_led.toggle();
-        // We delay for 500ms 
+        // We delay for 500ms
         timer.delay_ms(500_u16);
         // Repeat
     }
@@ -68,7 +68,7 @@ I'll be using the NUCLEO-L476 for this post and will mostly utilize the on board
 Now that we have our handle to the GPIO bank we need to actually configure the pin we want to use in our case **PC13**. The button on this board is open when the button state is idle and it is shorted to ground when the button is pressed. So we will want to use the pin as a pull up input. We can do so by adding the following:
 
 ```rust
-    // Declare PC13 as a pull up input and grab a mutable reference to it    
+    // Declare PC13 as a pull up input and grab a mutable reference to it
     let mut user_btn = gpioc.pc13.into_pull_up_input(&mut gpioc.moder, &mut gpioc.pupdr);
 ```
 
@@ -76,7 +76,7 @@ And that's it now we will simply poll the button state and when the button is no
 
 ```rust
     loop {
-        // Check if the button is pressed (shorted to GND) 
+        // Check if the button is pressed (shorted to GND)
         if user_btn.is_low() {
             // Set the LED state to LOW
             user_led.set_low()
@@ -111,6 +111,7 @@ static BUTTON: Mutex<RefCell<Option<PC13<Input<PullUp>>>>> = Mutex::new(RefCell:
 // Led Global Variable
 static LED: Mutex<RefCell<Option<PA5<Output<PushPull>>>>> = Mutex::new(RefCell::new(None));
 ```
+
 We needed to pull in the relevant Structs, Types, and Traits as well as declare our global variables so that we can access the resources inside or our interrupt. We then use the methods associated with our pin to configure it as an interrupt. We want a falling edge if we want the interrupt to trigger whenever the button is pressed, and we remove all of the code from our main loop so that the pin state is only changed within the interrupt.
 
 ```rust
@@ -160,6 +161,7 @@ fn EXTI15_10() {
 }
 
 ```
+
 The code for this is fairly straight forward. If you flash your MCU you should see that each time you press the button the LED state is toggled. Full code below.
 
 ```rust
@@ -216,7 +218,7 @@ fn main() -> ! {
     // Get a singleton to the CorePeripherals of our device. Coreperipherals differ from Peripherals
     // the CorePeripherals are common to the cortex-m family.
     let cp = stm32l4xx_hal::device::CorePeripherals::take().unwrap();
-    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members 
+    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members
     let mut flash = p.FLASH.constrain();
     // Acquire clock control handle
     let mut rcc = p.RCC.constrain();
@@ -239,7 +241,7 @@ fn main() -> ! {
 
     // Get a handle to the GPIOC bank
     let mut gpioc = p.GPIOC.split(&mut rcc.ahb2);
-    // Declare PC13 as a pull up input and grab a mutable reference to it    
+    // Declare PC13 as a pull up input and grab a mutable reference to it
     let mut user_btn = gpioc.pc13.into_pull_up_input(&mut gpioc.moder, &mut gpioc.pupdr);
     // Make the pin an interrupt source
     user_btn.make_interrupt_source(&mut p.SYSCFG, &mut rcc.apb2);
@@ -271,7 +273,7 @@ Each cycle is defined by the **period** of the PWM or the frequency. This is def
 
 The equation to determine the PWM frequency is the following:
 
-**Freq = (Clk Speed (Hz))/((ARR + 1)*(PSC+1))**
+**Freq = (Clk Speed (Hz))/((ARR + 1)\*(PSC+1))**
 
 Using the HAL methods these variables are fairly opaque to us. The duty cycle the following relationship
 
@@ -311,7 +313,7 @@ pub trait _embedded_hal_PwmPin {
 
 We first get the maximum duty value of the timer **ARR** and then we can set the duty cycle to a fraction of that value by dividing down the max value. Let's see what happens when we set the duty cycle to half the value when we look at the output wave form on a logic analyzer.
 
-![50% Duty Cycle output](/assets/embedded-rust-gpios/50_duty_cycle.png)
+![50 Duty Cycle](/assets/obsidian/50-duty-cycle.png)
 
 Great it's almost exactly what we would expect the top is the Digital representation of the analog signal that is ont the bottom. Let's see what happens when we divide it down by 4:
 
@@ -320,7 +322,7 @@ Great it's almost exactly what we would expect the top is the Digital representa
     pwm.set_duty(max_duty/4);
 ```
 
-![25% Duty Cycle output](/assets/embedded-rust-gpios/25_duty_cycle.png)
+![25 Duty Cycle](/assets/obsidian/25-duty-cycle.png)
 
 and here's the final code:
 
@@ -353,7 +355,7 @@ fn main() -> ! {
     // Get a singleton to the CorePeripherals of our device. Coreperipherals differ from Peripherals
     // the CorePeripherals are common to the cortex-m family.
     let cp = stm32l4xx_hal::device::CorePeripherals::take().unwrap();
-    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members 
+    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members
     let mut flash = p.FLASH.constrain();
     // Acquire clock control handle
     let mut rcc = p.RCC.constrain();
@@ -386,10 +388,3 @@ fn main() -> ! {
 ```
 
 That's going to be the end of this blog post I hope this helped.
-
-
-
-
-
-
-

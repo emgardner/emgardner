@@ -14,7 +14,9 @@ const { url, thumbnail, title, description, date, tags } = Astro.props;
 ---
 
 <a href={url} class="flex flex-wrap wrap mb-8 w-full sm:flex-nowrap relative pb-12">
+	<!--
 	<img src={thumbnail} class="hidden max-h-32 mr-3 sm:block max-w-100 rounded"/>
+	-->
 	<div class="flex flex-col flex-1">
 		<div class="flex my-2">
 		{  tags.map((t) => {

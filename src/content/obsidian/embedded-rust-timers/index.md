@@ -1,10 +1,10 @@
---- 
+---
 title: Timers in embedded Rust
 hero: ./Background.jpg
 thumbnail: ./Thumbnail.png
 description: How to use timer's in embedded rust
 layout: ../../../layouts/PostLayout.astro
-tags: [ rust, embedded, stm32, microcontrollers ]
+tags: [rust, embedded, stm32, microcontrollers]
 date: 01-21-2022
 draft: false
 ---
@@ -28,7 +28,7 @@ fn main() -> ! {
     // Get a singleton to the CorePeripherals of our device. CorePeripherals differ from Peripherals
     // the CorePeripherals are common to the cortex-m family.
     let cp = stm32l4xx_hal::device::CorePeripherals::take().unwrap();
-    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members 
+    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members
     let mut flash = p.FLASH.constrain();
     // Acquire clock control handle
     let mut rcc = p.RCC.constrain();
@@ -51,7 +51,7 @@ fn main() -> ! {
     loop {
         // We use the Toggleable trait to turn on and off the led
         user_led.toggle();
-        // We delay for 500ms 
+        // We delay for 500ms
         timer.delay_ms(500_u16);
         // Repeat
     }
@@ -60,20 +60,20 @@ fn main() -> ! {
 
 ## A simple Delay timer
 
-Now let's implement the **Delay** timer functionality ourselves so that we can see how it works. Timer's work by incrementing a value at each of their clock cycles. We can control a few things with how the timer works. We can control how frequently the value is updated using the **PRESCALER** which will divide the clock down, and we can also control when the **COUNTER/PRELOAD** will overflow. 
+Now let's implement the **Delay** timer functionality ourselves so that we can see how it works. Timer's work by incrementing a value at each of their clock cycles. We can control a few things with how the timer works. We can control how frequently the value is updated using the **PRESCALER** which will divide the clock down, and we can also control when the **COUNTER/PRELOAD** will overflow.
 
-The equation for the frequency of the interrupt is: 
+The equation for the frequency of the interrupt is:
 
-**(1/Freq) = (COUNTER * PRESCALER)/(CLOCK SPEED)**
+**(1/Freq) = (COUNTER \* PRESCALER)/(CLOCK SPEED)**
 
-Knowing this let's look at our **SYST** struct and see what methods we can use to accomplish this. We will attempt to implement a timer that takes a delay in **ms**. 
+Knowing this let's look at our **SYST** struct and see what methods we can use to accomplish this. We will attempt to implement a timer that takes a delay in **ms**.
 
 ```rust
     // Get mutable reference to the SYST peripheral
     let mut syst = cp.SYST;
     // Set the clock source to the internal clock
     syst.set_clock_source(cortex_m::peripheral::syst::SystClkSource::Core);
-    // Set the reload period of the timer to be 
+    // Set the reload period of the timer to be
     syst.set_reload(80_000_000 / 1000);
     // Initialize timer to 0
     syst.clear_current();
@@ -83,9 +83,9 @@ Knowing this let's look at our **SYST** struct and see what methods we can use t
 
 We set the clock source to the internal clock which is running at 80Mhz. We want the counter to overflow each ms so we divide the clock frequency by the desired overflow period. According to our equaton this will give us the following:
 
-**(1/Freq) = ((80,000,000/1,000)) * 1)/(80,000,000) = 1 Khz**
+**(1/Freq) = ((80,000,000/1,000)) \* 1)/(80,000,000) = 1 Khz**
 
-We then clear the current value so that we start at 0. Then we enable the counter.  Now we can modularize this so that we can get a more useful function:
+We then clear the current value so that we start at 0. Then we enable the counter. Now we can modularize this so that we can get a more useful function:
 
 ```rust
 fn delay(syst: &mut pac::SYST, time: u16) {
@@ -141,7 +141,7 @@ fn main() -> ! {
     // Get a singleton to the CorePeripherals of our device. Coreperipherals differ from Peripherals
     // the CorePeripherals are common to the cortex-m family.
     let cp = stm32l4xx_hal::device::CorePeripherals::take().unwrap();
-    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members 
+    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members
     let mut flash = p.FLASH.constrain();
     // Acquire clock control handle
     let mut rcc = p.RCC.constrain();
@@ -163,7 +163,7 @@ fn main() -> ! {
     let mut syst = cp.SYST;
     // Set the clock source to the internal clock
     syst.set_clock_source(cortex_m::peripheral::syst::SystClkSource::Core);
-    // Set the reload period of the timer to be 
+    // Set the reload period of the timer to be
     syst.set_reload(80_000_000 / 1_000);
     loop {
         // We use the Toggleable trait to turn on and off the led
@@ -218,7 +218,7 @@ fn TIM2() {
         if let Some(ref mut led) = led_ref.deref_mut() {
             led.toggle();
         }
-        // Get the timer refernce and clear then event timeout so it isn't 
+        // Get the timer refernce and clear then event timeout so it isn't
         // triggered immediately
         let mut tim_ref = TIM.borrow(cs).borrow_mut();
         if let Some(ref mut tim) = tim_ref.deref_mut() {
@@ -231,7 +231,7 @@ fn TIM2() {
 fn main() -> ! {
     // Get a singleton to the peripherals of our device
     let p = pac::Peripherals::take().unwrap();
-    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members 
+    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members
     let mut flash = p.FLASH.constrain();
     // Acquire clock control handle
     let mut rcc = p.RCC.constrain();
@@ -267,6 +267,7 @@ fn main() -> ! {
     }
 }
 ```
+
 Not a whole lot has changed here. Lets look at what we added.
 
 ```rust
@@ -276,9 +277,10 @@ static LED: Mutex<RefCell<Option<PA5<Output<PushPull>>>>> = Mutex::new(RefCell::
 static TIM: Mutex<RefCell<Option<Timer<TIM2>>>> = Mutex::new(RefCell::new(None));
 ```
 
-Here we decalre a global variable we need this in order to access the timer and gpio inside of our interrupt (ok we could use unsafe code but let's just do it the right way). 
+Here we decalre a global variable we need this in order to access the timer and gpio inside of our interrupt (ok we could use unsafe code but let's just do it the right way).
 
 Next let's look at the interrupt handler:
+
 ```rust
 //Declare the timer interrupt
 #[interrupt]
@@ -290,7 +292,7 @@ fn TIM2() {
         if let Some(ref mut led) = led_ref.deref_mut() {
             led.toggle();
         }
-        // Get the timer refernce and clear then event timeout so it isn't 
+        // Get the timer refernce and clear then event timeout so it isn't
         // triggered immediately
         let mut tim_ref = TIM.borrow(cs).borrow_mut();
         if let Some(ref mut tim) = tim_ref.deref_mut() {
@@ -366,18 +368,18 @@ static MILLIS: AtomicU32 = AtomicU32::new(0);
 fn TIM2() {
     // Run the critical section code
     free(|cs| {
-        // Get the timer refernce and clear then event timeout so it isn't 
+        // Get the timer refernce and clear then event timeout so it isn't
         // triggered immediately
         let mut tim_ref = TIM.borrow(cs).borrow_mut();
         if let Some(ref mut tim) = tim_ref.deref_mut() {
-            // Get the timer refernce and clear then event timeout so it isn't 
+            // Get the timer refernce and clear then event timeout so it isn't
             // triggered immediately
             tim.clear_interrupt(Event::TimeOut);
             // Add one to the millis count
             MILLIS.fetch_add(1, Ordering::SeqCst);
         }
     });
-    
+
 }
 
 fn millis() -> u32 {
@@ -389,7 +391,7 @@ fn millis() -> u32 {
 fn main() -> ! {
     // Get a singleton to the peripherals of our device
     let p = pac::Peripherals::take().unwrap();
-    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members 
+    // From my understanding the constrain method works to provide different methods from the HAL on each of it's members
     let mut flash = p.FLASH.constrain();
     // Acquire clock control handle
     let mut rcc = p.RCC.constrain();
@@ -432,4 +434,4 @@ fn main() -> ! {
 }
 ```
 
-The only changes we've made are to the timeout frequency changing to **1000Hz** and adding in an **Atomicu32** to keep track of how many time's our counter has overflowed. Using this approach we can run many non timing critical tasks without ever holding up our main loop. I hope this helped showcase how timer's work and how you can use them in your code. 
+The only changes we've made are to the timeout frequency changing to **1000Hz** and adding in an **Atomicu32** to keep track of how many time's our counter has overflowed. Using this approach we can run many non timing critical tasks without ever holding up our main loop. I hope this helped showcase how timer's work and how you can use them in your code.

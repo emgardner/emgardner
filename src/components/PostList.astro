@@ -3,7 +3,6 @@ import Post from "./Post.astro";
 const posts = await Astro.glob("../pages/posts/**/*.mdx");
 
 const getRealImage = (postLocation: string, imageLocation: string): string => {
-  console.log(postLocation, imageLocation)
 	let post = postLocation.split("/").slice(2);
 	let image = imageLocation.split("/");
 	post[post.length - 1] = image[image.length - 1]
