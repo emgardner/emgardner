@@ -3,8 +3,11 @@ title: Timers in embedded Rust
 hero: ./Background.jpg
 thumbnail: ./Thumbnail.png
 description: How to use timer's in embedded rust
-layout: ../../../layouts/PostLayout.astro
-tags: [rust, embedded, stm32, microcontrollers]
+tags:
+  - rust
+  - embedded
+  - stm32
+  - microcontrollers
 date: 01-21-2022
 draft: false
 ---

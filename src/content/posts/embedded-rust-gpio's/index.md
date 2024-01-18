@@ -3,8 +3,11 @@ title: GPIO'S in embedded Rust
 hero: ./Background.jpg
 thumbnail: ./Thumbnail.png
 description: How to use gpios in embedded rust
-layout: ../../../layouts/PostLayout.astro
-tags: [rust, embedded, stm32, microcontrollers]
+tags:
+  - rust
+  - embedded
+  - stm32
+  - microcontrollers
 date: 01-22-2022
 draft: false
 ---

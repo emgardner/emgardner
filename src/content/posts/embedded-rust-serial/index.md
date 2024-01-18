@@ -3,8 +3,11 @@ title: Embedded Rust Serial
 hero: ./Background.jpg
 thumbnail: ./Thumbnail.png
 description: How to use the UART in embedded rust
-layout: ../../../layouts/PostLayout.astro
-tags: [rust, embedded, stm32, microcontrollers]
+tags:
+  - rust
+  - embedded
+  - stm32
+  - microcontrollers
 date: 01-23-2022
 draft: false
 ---

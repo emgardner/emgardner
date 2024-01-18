@@ -3,7 +3,6 @@ title: Setting up an embedded rust project for STM32
 hero: ./Background.jpg
 thumbnail: Thumbnail.png
 description: How to use cargo to setup an embedded rust project.
-// layout: ../../../layouts/PostLayout.astro
 tags: [rust, embedded, stm32, microcontrollers]
 date: 01-20-2022
 draft: false
