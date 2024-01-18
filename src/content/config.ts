@@ -1,8 +1,14 @@
-import { z, defineCollection } from "astro:content";
-const weeklyLetterCollection = defineCollection({});
-// const blogCollection = defineCollection({});
-const obsidianCollection = defineCollection({});
+import { defineCollection } from "astro:content";
+const postsCollection = defineCollection({});
+const weeklyNotesCollection = defineCollection({});
 
+export const collections = {
+  posts: postsCollection,
+  'weekly-notes': weeklyNotesCollection
+};
+
+// const weeklyLetterCollection = defineCollection({});
+// const blogCollection = defineCollection({});
 // const blogCollection = defineCollection({
 //   type: 'content', // v2.5.0 and later
 //   schema: z.object({
@@ -11,8 +17,5 @@ const obsidianCollection = defineCollection({});
 //     image: z.string().optional(),
 //   }),
 // });
-export const collections = {
-  newsletter: weeklyLetterCollection,
-  // blog: blogCollection,
-  obsidian: obsidianCollection
-};
+// newsletter: weeklyLetterCollection,
+// blog: blogCollection,

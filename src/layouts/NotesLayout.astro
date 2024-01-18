@@ -1,0 +1,36 @@
+---
+import BaseLayout from './BaseLayout.astro';
+---
+<BaseLayout>
+<div class="flex flex-col w-full items-center">
+  <article class="
+   prose prose-invert 
+   max-w-full
+   sm:max-w-prose sm:prose-sm 
+   md:prose-md 
+  lg:prose-lg 
+  xl:prose-xl 
+  2xl:prose-2xl 
+   my-12 whitespace-pre-line
+      ">
+    <slot>
+    </slot>
+  </article>
+</div>
+</BaseLayout>
+<style is:global>
+
+  p:has(img) {
+    display: flex;
+    justify-content: center;
+  }
+
+  pre:has(code)::-webkit-scrollbar {
+    display: none;
+  }
+
+  pre:has(code) {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+</style>

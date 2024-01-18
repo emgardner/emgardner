@@ -2,20 +2,8 @@
 import PostLayout from '../../layouts/PostLayout.astro';
 import { getCollection } from 'astro:content';
 
-// export async function getStaticPaths() {
-//   const blogEntries = await getCollection('blog');
-//   return blogEntries.map(entry => {
-//     return(
-//       {
-//         params: { post: `${entry.slug}` }, 
-//         props: { entry },
-//       }
-//     )
-//   });
-// }
-
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('obsidian');
+  const blogEntries = await getCollection('posts');
   return blogEntries.map(entry => {
     return(
       {
@@ -26,16 +14,15 @@ export async function getStaticPaths() {
   });
 }
 
-
 const title = "Posts"
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-//<PostLayout
-//	title={title}
-//>
-//</PostLayout>
 ---
-<Content />
+<PostLayout
+	title={title}
+>
+  <Content />
+</PostLayout>
 
 
 

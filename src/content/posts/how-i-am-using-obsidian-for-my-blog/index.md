@@ -4,6 +4,8 @@ tags:
   - PROGRAMMING
   - "#obsidian"
 layout: ../../../layouts/PostLayout.astro
+title: How i am using Obsidian for my blog
+date: 01-12-2023
 ---
 ## This Is Great
 

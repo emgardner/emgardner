@@ -13,20 +13,16 @@ export interface Props {
 const { url, thumbnail, title, description, date, tags } = Astro.props;
 ---
 
-<a href={url} class="flex flex-wrap wrap mb-8 w-full sm:flex-nowrap relative pb-12">
-	<!--
-	<img src={thumbnail} class="hidden max-h-32 mr-3 sm:block max-w-100 rounded"/>
-	-->
-	<div class="flex flex-col flex-1">
-		<div class="flex my-2">
+<a href={url} class="flex flex-wrap wrap w-full sm:flex-nowrap relative">
+	<div class="flex flex-col flex-1 space-y-1">
+		<span class="w-full text-2xl">{title}</h2>
+		<span class="w-full text-md">{date}</span>
+		<div class="flex py-1 space-x-2">
 		{  tags.map((t) => {
-					return <span class="border border-white mx-1 p-1 rounded">{t}</span>	
+					return <span class="border border-white pr-1 p-1 rounded">{t.replace('#', '').toLowerCase()}</span>	
 				})
 		}
 		</div>
-		<span class="w-full text-xl">{title}</h2>
-		<span class="w-full text-sm">{date}</span>
-		<span class="w-full text-base">{description}</span>
+		<div class="bg-white h-px w-full bottom-0 left-0"></div>
 	</div>
-	<div class="bg-white h-px w-full mt-2 absolute bottom-0 left-0"></div>
 </a>

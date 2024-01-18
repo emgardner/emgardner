@@ -1,0 +1,31 @@
+---
+import NotesLayout from '../../layouts/NotesLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('weekly-notes');
+  return entries.map(entry => {
+    return(
+      {
+        params: { note: `${entry.slug}` }, 
+        props: { entry },
+      }
+    )
+  });
+}
+
+const title = "Posts"
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<NotesLayout
+>
+  <Content />
+</NotesLayout>
+
+
+
+
+
+

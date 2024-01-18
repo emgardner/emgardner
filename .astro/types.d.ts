@@ -194,40 +194,49 @@ declare module 'astro:content' {
   data: any
 } & { render(): Render[".md"] };
 };
-"obsidian": {
+"posts": {
 "embedded-rust-from-zero-to-blink/index.md": {
 	id: "embedded-rust-from-zero-to-blink/index.md";
   slug: "embedded-rust-from-zero-to-blink";
   body: string;
-  collection: "obsidian";
+  collection: "posts";
   data: any
 } & { render(): Render[".md"] };
 "embedded-rust-gpio's/index.md": {
 	id: "embedded-rust-gpio's/index.md";
   slug: "embedded-rust-gpios";
   body: string;
-  collection: "obsidian";
+  collection: "posts";
   data: any
 } & { render(): Render[".md"] };
 "embedded-rust-serial/index.md": {
 	id: "embedded-rust-serial/index.md";
   slug: "embedded-rust-serial";
   body: string;
-  collection: "obsidian";
+  collection: "posts";
   data: any
 } & { render(): Render[".md"] };
 "embedded-rust-timers/index.md": {
 	id: "embedded-rust-timers/index.md";
   slug: "embedded-rust-timers";
   body: string;
-  collection: "obsidian";
+  collection: "posts";
   data: any
 } & { render(): Render[".md"] };
 "how-i-am-using-obsidian-for-my-blog/index.md": {
 	id: "how-i-am-using-obsidian-for-my-blog/index.md";
   slug: "how-i-am-using-obsidian-for-my-blog";
   body: string;
-  collection: "obsidian";
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
+};
+"weekly-notes": {
+"week-2---2024/index.md": {
+	id: "week-2---2024/index.md";
+  slug: "week-2---2024";
+  body: string;
+  collection: "weekly-notes";
   data: any
 } & { render(): Render[".md"] };
 };
