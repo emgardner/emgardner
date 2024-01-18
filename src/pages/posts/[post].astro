@@ -14,13 +14,13 @@ export async function getStaticPaths() {
   });
 }
 
-const title = "Posts"
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 <PostLayout
-	title={title}
+	title={entry.data.title}
 >
+  <h1>{entry.data.title}</h1>
   <Content />
 </PostLayout>
 

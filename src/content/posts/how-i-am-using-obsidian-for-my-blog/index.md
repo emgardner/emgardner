@@ -6,8 +6,6 @@ tags:
 title: How i am using Obsidian for my blog
 date: 01-12-2023
 ---
-## This Is Great
-
 I've been wanting to write more blog articles mostly for three reasons:
 
 - I believe writing will help clarify my thought's and cement my knowledge.

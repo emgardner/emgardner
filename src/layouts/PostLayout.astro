@@ -1,7 +1,15 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
 ---
-<BaseLayout>
+<BaseLayout
+    title={title}
+>
 <div class="flex flex-col w-full items-center">
   <article class="
    prose prose-invert 
