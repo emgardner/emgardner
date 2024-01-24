@@ -4,7 +4,7 @@ tags:
   - PROGRAMMING
   - "#obsidian"
 title: How i am using Obsidian for my blog
-date: 01-12-2023
+date: 01-12-2024
 ---
 I've been wanting to write more blog articles mostly for three reasons:
 
@@ -18,7 +18,7 @@ My initial goal was to edit blog posts directly in my text editor and have the f
 
 By this point I've been using Obsidian for the better part of a year now and I really like it. I'm not a power user by any stretch, and my note taking habit's could be way better. So i thought why not just use the markdown editor that Obsidian provides me with to edit my blog content?
 
-![Pasted image 20240107154046](/assets/obsidian/pasted-image-20240107154046.png)
+![Pasted image 20240107154046](/assets/obsidian//pasted-image-20240107154046.png)
 <p style="text-align: center; font-style:italic;">Obligatory Obsidian Graph</p>
 
 

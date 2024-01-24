@@ -8,7 +8,7 @@ tags:
   - embedded
   - stm32
   - microcontrollers
-date: 01-23-2022
+date: 01-23-2023
 draft: false
 ---
 
@@ -153,7 +153,7 @@ If you run this script you should see the following on the terminal:
 
 Perfect we get our 4 byte message's (3 ints, 1 newline) and echo them out. Now let's do something a little bit more useful with this information let's change the length of the LED's on time based on our recevied message. We are sending over ascii numeric values. We could send over raw bytes and process them but dealing with the ascii values gives us a fun little challenge. Ascii is a character encoding standard for electronic communication. ASCII codes represent text in computers.
 
-![ASCII Table](/assets/obsidian/ascii-table.png)
+![ASCII Table](/assets/obsidian//ascii-table.png)
 
 How do we represent the number 1000 with ascii text? It's equivalent to the u8 byte array of [31, 30, 30, 30]. There are many methods to decoding this but let's roll our own for fun:
 
@@ -586,10 +586,10 @@ The DMA Configuration Register contains the following fields:
 | TCIE     | 1     | Transfer Complete Interrupt Enable      |
 | EN       | 0     | Enable                                  |
 
-![DMA Config](/assets/obsidian/dma-config.png)
+![DMA Config](/assets/obsidian//dma-config.png)
 
-![DMA Interrupt Status](/assets/obsidian/dma-interrupt-status.png)
+![DMA Interrupt Status](/assets/obsidian//dma-interrupt-status.png)
 
-![DMA Interrupt Flags](/assets/obsidian/dma-interrupt-flags.png)
+![DMA Interrupt Flags](/assets/obsidian//dma-interrupt-flags.png)
 
 **Work In progress**

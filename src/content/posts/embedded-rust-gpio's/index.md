@@ -8,7 +8,7 @@ tags:
   - embedded
   - stm32
   - microcontrollers
-date: 01-22-2022
+date: 01-22-2023
 draft: false
 ---
 
@@ -316,7 +316,7 @@ pub trait _embedded_hal_PwmPin {
 
 We first get the maximum duty value of the timer **ARR** and then we can set the duty cycle to a fraction of that value by dividing down the max value. Let's see what happens when we set the duty cycle to half the value when we look at the output wave form on a logic analyzer.
 
-![50 Duty Cycle](/assets/obsidian/50-duty-cycle.png)
+![50 Duty Cycle](/assets/obsidian//50-duty-cycle.png)
 
 Great it's almost exactly what we would expect the top is the Digital representation of the analog signal that is ont the bottom. Let's see what happens when we divide it down by 4:
 
@@ -325,7 +325,7 @@ Great it's almost exactly what we would expect the top is the Digital representa
     pwm.set_duty(max_duty/4);
 ```
 
-![25 Duty Cycle](/assets/obsidian/25-duty-cycle.png)
+![25 Duty Cycle](/assets/obsidian//25-duty-cycle.png)
 
 and here's the final code:
 

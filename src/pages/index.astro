@@ -6,7 +6,7 @@ import Post from "../components/Post.astro";
 const title = "Home"
 import { getCollection, getEntry } from 'astro:content';
 const allPosts = await getCollection('posts');
-const nonDraftPosts = allPosts.filter(post => !post.data.draft)
+const nonDraftPosts = allPosts.filter(post => !post.data.draft).sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
 ---
 <BaseLayout
 	title={title}

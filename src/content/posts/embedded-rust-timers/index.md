@@ -8,7 +8,7 @@ tags:
   - embedded
   - stm32
   - microcontrollers
-date: 01-21-2022
+date: 01-21-2023
 draft: false
 ---
 

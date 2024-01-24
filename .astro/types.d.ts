@@ -230,11 +230,25 @@ declare module 'astro:content' {
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
+"web-scraping-and-crawling-in-rust/index.md": {
+	id: "web-scraping-and-crawling-in-rust/index.md";
+  slug: "web-scraping-and-crawling-in-rust";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
 };
 "weekly-notes": {
 "week-2---2024/index.md": {
 	id: "week-2---2024/index.md";
   slug: "week-2---2024";
+  body: string;
+  collection: "weekly-notes";
+  data: any
+} & { render(): Render[".md"] };
+"week-3--2024/index.md": {
+	id: "week-3--2024/index.md";
+  slug: "week-3--2024";
   body: string;
   collection: "weekly-notes";
   data: any

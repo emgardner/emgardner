@@ -3,8 +3,12 @@ title: Setting up an embedded rust project for STM32
 hero: ./Background.jpg
 thumbnail: Thumbnail.png
 description: How to use cargo to setup an embedded rust project.
-tags: [rust, embedded, stm32, microcontrollers]
-date: 01-20-2022
+tags:
+  - rust
+  - embedded
+  - stm32
+  - microcontrollers
+date: 01-20-2023
 draft: false
 ---
 
@@ -16,7 +20,7 @@ The purpose of this post is to give a brief overview of how to setup an embedded
 - An STM32 board preferrably one with an in built programmer and USB/UART converter like the **NUCLEO** series of board these can be bought for fairly cheap and in my opinion are much nicer than the **Bluepill** [Many can be found here for reasonable cost](https://www.digikey.com/en/product-highlight/s/stmicroelectronics/nucleo-development-boards)
 - A programmer if your board doesn't have one, if you've bought a bluepill from amazon chances are this came in the package.
 
-![Nucleo Board](/assets/obsidian/nucleo-board.png)
+![Nucleo Board](/assets/obsidian//nucleo-board.png)
 ### Target Installation
 
 If you haven't installed rust yet do so by following the directions on the official rust site: [Rust Installation Instructions](https://www.rust-lang.org/learn/get-started). The next step will be to install the proper cross-toolchain compiler for the chip that we're using.
@@ -111,7 +115,7 @@ rustflags = [ "-C", "link-arg=-Tlink.x"]
 
 Lastly we will create a very basic linker script. This is baord specific. If you're unfamiliar with microcontrollers this will always be found in you MCU's datasheets or reference manual. A layout of the memory sections is provided below. By convention RAM starts at 0x2000000 and Flash starts at 0x80000000.
 
-![STM32 Memory Bank](/assets/obsidian/stm32-memory-bank.png)
+![STM32 Memory Bank](/assets/obsidian//stm32-memory-bank.png)
 
 ```
 /* memory.x - Linker script for the STM32L476RGT6 */
@@ -243,14 +247,14 @@ What on earth is **gpioa.moder** and **gpioa.typer**. Well these are registers t
 
 Here we see that the GPIOA_MODER register set's the mode of the GPIO pins on BANK A.
 
-![GPIOA_MODER Register](/assets/obsidian/gpioa_moder-register.png)
+![GPIOA_MODER Register](/assets/obsidian//gpioa_moder-register.png)
 
 That mode is defined by the following bit's:
 
-![GPIO MODE CONFIGURATION](/assets/obsidian/gpio-mode-configuration.png)
+![GPIO MODE CONFIGURATION](/assets/obsidian//gpio-mode-configuration.png)
 And lastly the type of output is defined here:
 
-![GPIO OUTPUT CONFIGURATION](/assets/obsidian/gpio-output-configuration.png)
+![GPIO OUTPUT CONFIGURATION](/assets/obsidian//gpio-output-configuration.png)
 
 When you hear someone refer to bare-metal programming often what they are referring to is that instead of using a nice method like this:
 
